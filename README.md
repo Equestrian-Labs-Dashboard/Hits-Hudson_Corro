@@ -21,3 +21,7 @@ No requiere Google Sheets, Google Cloud ni cuenta de servicio.
 6. Cuando termine, el workflow de Pages publicará la web.
 
 Las metas están en `config/goals.json`. El diseño está en `docs/index.html` y corresponde al diseño original.
+
+
+## Fix for empty week error
+The included placeholder report now contains all configured weeks, so the page no longer crashes before the first Shopify refresh. Run the `Update HITS Hudson report` workflow to replace zero values with live Shopify data.
