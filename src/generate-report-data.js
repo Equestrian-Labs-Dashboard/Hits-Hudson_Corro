@@ -30,11 +30,12 @@ const MODEL = {
   grossMarginTarget: 0.60,
   nicoleWeekly: 660,
   hotelWeekly: 1600,
+  marketingExpenseWeekly: 305,
   activations: 100,
   storageBox: 21
 };
 MODEL.capex = MODEL.trailer + MODEL.setupFurniture + MODEL.otherCapex;
-MODEL.opex = MODEL.nicoleWeekly + MODEL.hotelWeekly + MODEL.activations + MODEL.storageBox;
+MODEL.opex = MODEL.nicoleWeekly + MODEL.hotelWeekly + MODEL.marketingExpenseWeekly + MODEL.activations + MODEL.storageBox;
 
 const round2 = (n) => Math.round((Number(n || 0) + Number.EPSILON) * 100) / 100;
 const money = (set, fallback = 0) => round2(set?.shopMoney?.amount ?? fallback);
