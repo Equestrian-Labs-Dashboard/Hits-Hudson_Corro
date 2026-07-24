@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - "src/**"
+      - "config/**"
       - "docs/index.html"
       - "package*.json"
       - ".github/workflows/update-report.yml"
@@ -27,23 +28,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
       - run: npm install
-      - name: Generate report-data.json
+      - name: Generate web report from Shopify
         env:
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
           SHOPIFY_TOKEN: ${{ secrets.SHOPIFY_TOKEN }}
-          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
-          SHOPIFY_STORE: ${{ vars.SHOPIFY_STORE }}
-          SHOPIFY_API_VERSION: ${{ vars.SHOPIFY_API_VERSION }}
-          HITS_LOCATION_ID: ${{ vars.HITS_LOCATION_ID }}
-          HITS_LOCATION_NAME: ${{ vars.HITS_LOCATION_NAME }}
-          HITS_ORDER_TAG: ${{ vars.HITS_ORDER_TAG }}
-          GOALS_SPREADSHEET_ID: ${{ vars.GOALS_SPREADSHEET_ID }}
-          GOALS_SHEET_NAME: ${{ vars.GOALS_SHEET_NAME }}
-          PROJECT_WEEKS: ${{ vars.PROJECT_WEEKS }}
-          PROJECT_START_DATE: ${{ vars.PROJECT_START_DATE }}
         run: npm run generate
-      - name: Commit refreshed data
+      - name: Commit refreshed web data
         run: |
           if git diff --quiet -- docs/report-data.json; then
             echo "No report changes"
