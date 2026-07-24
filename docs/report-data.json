@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T15:09:14.159Z",
+  "generated_at": "2026-07-24T16:59:05.513Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -147,15 +147,15 @@
       "endISO": "2026-07-26",
       "goal": 14000,
       "actual": {
-        "gross_sales": 5329.09,
+        "gross_sales": 5471.58,
         "discounts": 128.83,
         "returns": 102.9,
-        "net_sales": 5097.36,
-        "gross_profit": 2622.42,
-        "total_orders": 35,
-        "units": 83,
-        "cogs": 2474.94,
-        "gross_margin": 0.5144663119732568
+        "net_sales": 5239.85,
+        "gross_profit": 2706.02,
+        "total_orders": 38,
+        "units": 89,
+        "cogs": 2533.83,
+        "gross_margin": 0.5164308138591753
       }
     },
     {
@@ -228,6 +228,72 @@
     }
   ],
   "orders": [
+    {
+      "order_id": "154144",
+      "order_date": "2026-07-24T16:13:00Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "N/A",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "gross_sales": 39.59,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 39.59,
+      "shipping_charges": 0,
+      "taxes": 3.18,
+      "total_sales": 42.77,
+      "units": 3,
+      "cogs": 19.92,
+      "gross_profit": 19.67,
+      "gross_margin": 0.4968426370295529
+    },
+    {
+      "order_id": "154143",
+      "order_date": "2026-07-24T15:53:58Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "Maggie Lily",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "gross_sales": 40,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 40,
+      "shipping_charges": 0,
+      "taxes": 3.2,
+      "total_sales": 43.2,
+      "units": 1,
+      "cogs": 0,
+      "gross_profit": 40,
+      "gross_margin": 1
+    },
+    {
+      "order_id": "154142",
+      "order_date": "2026-07-24T15:24:17Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "N/A",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "gross_sales": 62.9,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 62.9,
+      "shipping_charges": 0,
+      "taxes": 2.1,
+      "total_sales": 65,
+      "units": 2,
+      "cogs": 38.97,
+      "gross_profit": 23.93,
+      "gross_margin": 0.38044515103338633
+    },
     {
       "order_id": "154141",
       "order_date": "2026-07-24T14:42:15Z",
@@ -4528,9 +4594,9 @@
     }
   ],
   "stats": {
-    "scanned": 781,
-    "matched": 185,
-    "excluded": 596
+    "scanned": 785,
+    "matched": 188,
+    "excluded": 597
   },
   "formulas": {
     "budget_net_sales": "Sheet Gross Sales Goal × (1 − Discounts & Returns %)",
