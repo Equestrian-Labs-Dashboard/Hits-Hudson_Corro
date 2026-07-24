@@ -1,64 +1,45 @@
-# HITS Hudson — GitHub version
+# HITS Hudson — Web en GitHub, solo Shopify
 
-This repository replaces Google Apps Script with:
+Esta versión sustituye Google Apps Script por:
 
-- **GitHub Actions** as the secure backend job.
-- **GitHub Secrets** for Shopify and Google credentials.
-- **GitHub Variables** for non-secret configuration.
-- **GitHub Pages** for the dashboard.
-- `docs/report-data.json` as the generated data source.
+- **GitHub Actions** para consultar Shopify de forma segura.
+- **GitHub Pages** para mostrar el dashboard como sitio web.
+- `docs/report-data.json` como archivo de datos generado.
+- Configuración de metas en `config/goals.json`, sin conectarse a Google Sheets.
 
-## 1. Create the repository
+## Únicos Secrets necesarios
 
-Upload all files to a new GitHub repository and use `main` as the default branch.
+En **Settings → Secrets and variables → Actions → Secrets** crea únicamente:
 
-## 2. Repository secrets
+- `SHOPIFY_STORE` = `equestrian-labs.myshopify.com`
+- `SHOPIFY_TOKEN` = tu token privado `shpat_...`
 
-Go to **Settings → Secrets and variables → Actions → Secrets** and create:
+No se necesita cuenta de servicio, Google Sheets API ni credenciales de Google.
 
-- `SHOPIFY_TOKEN`: Shopify Admin API access token.
-- `GOOGLE_SERVICE_ACCOUNT_JSON`: complete Google service-account JSON, stored as one line/secret.
+## Configuración incluida en el repositorio
 
-Share the GOALS spreadsheet with the service account email as **Viewer**.
+- `config/report-config.json`: versión API, ubicación, tag y fechas del proyecto.
+- `config/goals.json`: semanas y metas de ventas.
 
-## 3. Repository variables
+Puedes editar `config/goals.json` directamente en GitHub para cambiar una meta semanal.
 
-Under **Variables**, create:
+## Publicar como web
 
-- `SHOPIFY_STORE` = `your-store.myshopify.com`
-- `SHOPIFY_API_VERSION` = `2026-07`
-- `HITS_LOCATION_ID` = `67063775290`
-- `HITS_LOCATION_NAME` = `Corro Trailer 1`
-- `HITS_ORDER_TAG` = `HitsHudson`
-- `GOALS_SPREADSHEET_ID` = spreadsheet ID
-- `GOALS_SHEET_NAME` = `GOALS`
-- `PROJECT_WEEKS` = `12`
-- `PROJECT_START_DATE` = `2026-06-01`
+1. Sube todos los archivos a un repositorio usando la rama `main`.
+2. Crea los dos Secrets de Shopify.
+3. Ve a **Settings → Pages**.
+4. En **Source**, selecciona **GitHub Actions**.
+5. Ve a **Actions** y ejecuta `Update HITS Hudson report`.
+6. El dashboard quedará publicado como una página web de GitHub Pages.
 
-## 4. Enable Pages
+## Seguridad
 
-Go to **Settings → Pages → Source → GitHub Actions**. Then run **Update HITS Hudson report** manually once from the Actions tab.
+El navegador nunca recibe `SHOPIFY_TOKEN`. GitHub Actions consulta Shopify y genera el JSON público que consume la web.
 
-## Payback correction
+## Payback
 
-There are now three different values:
+La contribución real semanal es:
 
-1. **Budget payback**: budget contribution every included week.
-2. **Actual-only payback**: only real started-week contributions; it can remain “Not reached.”
-3. **Actual + forecast payback**: real contribution for started weeks and budget contribution for future weeks.
+`Shopify Actual Gross Profit + Marketing Actual - OPEX Actual`
 
-The actual contribution formula is:
-
-`Shopify Actual Gross Profit + Manual Marketing Actual - Manual OPEX Actual`
-
-So yes: the actual/forecast cumulative cash and payback update whenever the Shopify actuals change.
-
-## Local test
-
-```bash
-npm install
-npm run check
-npm run generate
-```
-
-Use a local `.env` loader or export the values from `.env.example`; never commit real secrets.
+El cumulative cash y el payback actual/forecast se actualizan cada vez que GitHub Actions trae nuevos actuals de Shopify. Las semanas futuras utilizan forecast hasta que tengan datos reales.

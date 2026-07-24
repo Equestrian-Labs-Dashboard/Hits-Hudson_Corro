@@ -1,0 +1,77 @@
+{
+  "source": "Repository config/goals.json",
+  "weeks": [
+    {
+      "week": 1,
+      "startISO": "2026-06-01",
+      "endISO": "2026-06-07",
+      "goal": 14000
+    },
+    {
+      "week": 2,
+      "startISO": "2026-06-08",
+      "endISO": "2026-06-14",
+      "goal": 14000
+    },
+    {
+      "week": 3,
+      "startISO": "2026-06-15",
+      "endISO": "2026-06-21",
+      "goal": 14000
+    },
+    {
+      "week": 4,
+      "startISO": "2026-06-22",
+      "endISO": "2026-06-28",
+      "goal": 14000
+    },
+    {
+      "week": 5,
+      "startISO": "2026-06-29",
+      "endISO": "2026-07-05",
+      "goal": 14000
+    },
+    {
+      "week": 6,
+      "startISO": "2026-07-06",
+      "endISO": "2026-07-12",
+      "goal": 14000
+    },
+    {
+      "week": 7,
+      "startISO": "2026-07-13",
+      "endISO": "2026-07-19",
+      "goal": 14000
+    },
+    {
+      "week": 8,
+      "startISO": "2026-07-20",
+      "endISO": "2026-07-26",
+      "goal": 14000
+    },
+    {
+      "week": 9,
+      "startISO": "2026-07-27",
+      "endISO": "2026-08-02",
+      "goal": 14000
+    },
+    {
+      "week": 10,
+      "startISO": "2026-08-03",
+      "endISO": "2026-08-09",
+      "goal": 14000
+    },
+    {
+      "week": 11,
+      "startISO": "2026-08-10",
+      "endISO": "2026-08-16",
+      "goal": 14000
+    },
+    {
+      "week": 12,
+      "startISO": "2026-08-17",
+      "endISO": "2026-08-23",
+      "goal": 14000
+    }
+  ]
+}

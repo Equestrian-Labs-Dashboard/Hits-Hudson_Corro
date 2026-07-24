@@ -1,14 +1,11 @@
 {
   "name": "hits-hudson-report",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "generate": "node src/generate-report-data.js",
     "check": "node --check src/generate-report-data.js"
-  },
-  "dependencies": {
-    "google-auth-library": "^9.15.1"
   },
   "engines": { "node": ">=20" }
 }

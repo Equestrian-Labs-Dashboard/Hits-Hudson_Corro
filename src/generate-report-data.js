@@ -1,6 +1,5 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { GoogleAuth } from 'google-auth-library';
 
 const env = (name, fallback = '') => process.env[name] || fallback;
 const required = (name) => {
@@ -9,17 +8,17 @@ const required = (name) => {
   return value;
 };
 
+const repositoryConfig = JSON.parse(await fs.readFile(path.resolve('config/report-config.json'), 'utf8'));
+
 const CONFIG = {
   store: required('SHOPIFY_STORE').replace(/^https?:\/\//, '').replace(/\/$/, ''),
   token: required('SHOPIFY_TOKEN'),
-  apiVersion: env('SHOPIFY_API_VERSION', '2026-07'),
-  locationId: env('HITS_LOCATION_ID', '67063775290'),
-  locationName: env('HITS_LOCATION_NAME', 'Corro Trailer 1'),
-  orderTag: env('HITS_ORDER_TAG', 'HitsHudson'),
-  spreadsheetId: required('GOALS_SPREADSHEET_ID'),
-  sheetName: env('GOALS_SHEET_NAME', 'GOALS'),
-  projectWeeks: Number(env('PROJECT_WEEKS', '12')),
-  projectStart: env('PROJECT_START_DATE', '2026-06-01')
+  apiVersion: repositoryConfig.shopifyApiVersion || '2026-07',
+  locationId: String(repositoryConfig.locationId || '67063775290'),
+  locationName: repositoryConfig.locationName || 'Corro Trailer 1',
+  orderTag: repositoryConfig.orderTag || 'HitsHudson',
+  projectWeeks: Number(repositoryConfig.projectWeeks || 12),
+  projectStart: repositoryConfig.projectStart || '2026-06-01'
 };
 
 const MODEL = {
@@ -61,50 +60,20 @@ async function graphql(query, variables) {
 }
 
 async function loadGoals() {
-  const raw = required('GOOGLE_SERVICE_ACCOUNT_JSON');
-  let credentials;
-  try { credentials = JSON.parse(raw); }
-  catch { throw new Error('GOOGLE_SERVICE_ACCOUNT_JSON is not valid JSON. Save the complete service-account JSON as one GitHub secret.'); }
-
-  const auth = new GoogleAuth({ credentials, scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'] });
-  const client = await auth.getClient();
-  const token = await client.getAccessToken();
-  const range = encodeURIComponent(`${CONFIG.sheetName}!A:Z`);
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${CONFIG.spreadsheetId}/values/${range}?majorDimension=ROWS`;
-  const response = await fetch(url, { headers: { Authorization: `Bearer ${token.token || token}` } });
-  const body = await response.json();
-  if (!response.ok) throw new Error(`Google Sheets API ${response.status}: ${JSON.stringify(body)}`);
-
-  const rows = body.values || [];
-  if (rows.length < 2) throw new Error('GOALS sheet has no usable data rows.');
-  const normalize = (v) => String(v || '').toLowerCase().replace(/[^a-z0-9#]+/g, ' ').trim();
-  const headers = rows[0].map(normalize);
-  const find = (...names) => headers.findIndex((h) => names.map(normalize).includes(h));
-  const iStart = find('initial date', 'start date');
-  const iEnd = find('end date');
-  const iWeek = find('# week', 'week', 'week number');
-  const iGoal = find('goals', 'goal', 'sales goal', 'weekly goal');
-  if ([iStart, iEnd, iWeek, iGoal].some((i) => i < 0)) {
-    throw new Error(`Expected GOALS headers: INITIAL DATE, END DATE, # WEEK, GOALS. Found: ${rows[0].join(' | ')}`);
+  const goalsFile = path.resolve('config/goals.json');
+  const body = JSON.parse(await fs.readFile(goalsFile, 'utf8'));
+  const weeks = Array.isArray(body) ? body : body.weeks;
+  if (!Array.isArray(weeks) || !weeks.length) {
+    throw new Error('config/goals.json has no usable weeks.');
   }
-
-  const parseDate = (v) => {
-    const s = String(v || '').trim();
-    let m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
-    if (m) return `${m[3]}-${m[1].padStart(2, '0')}-${m[2].padStart(2, '0')}`;
-    m = s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
-    if (m) return `${m[1]}-${m[2].padStart(2, '0')}-${m[3].padStart(2, '0')}`;
-    const d = new Date(s);
-    return Number.isNaN(d.valueOf()) ? '' : isoDay(d);
-  };
-  const parseAmount = (v) => Number(String(v || 0).replace(/[$,\s]/g, '')) || 0;
-
-  return rows.slice(1).map((row) => ({
-    week: Number(String(row[iWeek] || '').replace(/\D/g, '')),
-    startISO: parseDate(row[iStart]),
-    endISO: parseDate(row[iEnd]),
-    goal: round2(parseAmount(row[iGoal]))
-  })).filter((w) => w.week && w.startISO && w.endISO).sort((a, b) => a.week - b.week).slice(0, CONFIG.projectWeeks);
+  return weeks.map((w) => ({
+    week: Number(w.week),
+    startISO: String(w.startISO || ''),
+    endISO: String(w.endISO || ''),
+    goal: round2(w.goal)
+  })).filter((w) => w.week && /^\d{4}-\d{2}-\d{2}$/.test(w.startISO) && /^\d{4}-\d{2}-\d{2}$/.test(w.endISO))
+    .sort((a, b) => a.week - b.week)
+    .slice(0, CONFIG.projectWeeks);
 }
 
 const ORDER_QUERY = `
