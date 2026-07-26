@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T11:37:42.503Z",
+  "generated_at": "2026-07-26T13:58:38.507Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -147,15 +147,15 @@
       "endISO": "2026-07-26",
       "goal": 14000,
       "actual": {
-        "gross_sales": 8775.57,
-        "discounts": 662.4,
+        "gross_sales": 8954.06,
+        "discounts": 680.24,
         "returns": 512.4,
-        "net_sales": 7600.77,
-        "gross_profit": 3992.61,
-        "total_orders": 57,
-        "units": 129,
-        "cogs": 3608.16,
-        "gross_margin": 0.5252902008612286
+        "net_sales": 7761.42,
+        "gross_profit": 4101.36,
+        "total_orders": 58,
+        "units": 130,
+        "cogs": 3660.06,
+        "gross_margin": 0.5284290761226682
       }
     },
     {
@@ -229,10 +229,37 @@
   ],
   "orders": [
     {
-      "order_id": "154178",
-      "order_date": "2026-07-25T21:27:03Z",
+      "order_id": "154182",
+      "order_date": "2026-07-26T12:53:25Z",
       "tags": [],
       "tag_has_hits": false,
+      "customer": "Stella Buckingham",
+      "customer_email": "ladystellab@icloud.com",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "gross_sales": 178.49,
+      "discounts": 17.84,
+      "returns": 0,
+      "net_sales": 160.65,
+      "shipping_charges": 0,
+      "taxes": 12.86,
+      "total_sales": 173.51,
+      "units": 1,
+      "cogs": 51.9,
+      "gross_profit": 108.75,
+      "gross_margin": 0.6769374416433239
+    },
+    {
+      "order_id": "154178",
+      "order_date": "2026-07-25T21:27:03Z",
+      "tags": [
+        "commissioneligible",
+        "Concierge",
+        "HitsHudson",
+        "NP"
+      ],
+      "tag_has_hits": true,
       "customer": "Rose Kane",
       "customer_email": "Rkane@eddiekanesteel.com",
       "payment_status": "PAID",
@@ -1155,8 +1182,13 @@
     {
       "order_id": "154113",
       "order_date": "2026-07-23T13:22:41Z",
-      "tags": [],
-      "tag_has_hits": false,
+      "tags": [
+        "commissioneligible",
+        "Concierge",
+        "HitsHudson",
+        "NP"
+      ],
+      "tag_has_hits": true,
       "customer": "Stella Buckingham",
       "customer_email": "ladystellab@icloud.com",
       "payment_status": "PAID",
@@ -2403,6 +2435,7 @@
       "order_id": "154023",
       "order_date": "2026-07-17T18:40:12Z",
       "tags": [
+        "commissioneligible",
         "Concierge",
         "HitsHudson",
         "NP"
@@ -5012,8 +5045,8 @@
     }
   ],
   "stats": {
-    "scanned": 821,
-    "matched": 207,
+    "scanned": 822,
+    "matched": 208,
     "excluded": 614
   },
   "formulas": {
