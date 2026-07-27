@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-27T15:15:34.913Z",
+  "generated_at": "2026-07-27T17:12:47.202Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -371,8 +371,8 @@
       "customer": "Scher Wasty",
       "customer_email": "scher.wasty@gmail.com",
       "payment_status": "PAID",
-      "fulfillment_status": "UNFULFILLED",
-      "location": "No Shopify location returned",
+      "fulfillment_status": "FULFILLED",
+      "location": "New Wellington Warehouse",
       "gross_sales": 98,
       "discounts": 0,
       "returns": 0,
@@ -5312,9 +5312,9 @@
     }
   ],
   "stats": {
-    "scanned": 846,
+    "scanned": 847,
     "matched": 220,
-    "excluded": 626
+    "excluded": 627
   },
   "formulas": {
     "budget_net_sales": "Sheet Gross Sales Goal × (1 − Discounts & Returns %)",
