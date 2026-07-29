@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T19:45:34.856Z",
+  "generated_at": "2026-07-29T21:13:40.373Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -251,7 +251,7 @@
       "tag_has_hits": false,
       "customer": "Kelly Purchase",
       "customer_email": "",
-      "payment_status": "AUTHORIZED",
+      "payment_status": "PAID",
       "fulfillment_status": "FULFILLED",
       "location": "Corro Trailer 1, Corro Trailer 1",
       "gross_sales": 203.65,
@@ -260,7 +260,7 @@
       "net_sales": 183.29,
       "shipping_charges": 0,
       "taxes": 14.64,
-      "total_sales": 0,
+      "total_sales": 197.93,
       "units": 7,
       "cogs": 130.37,
       "gross_profit": 52.92,
@@ -5350,9 +5350,9 @@
     }
   ],
   "stats": {
-    "scanned": 871,
+    "scanned": 872,
     "matched": 221,
-    "excluded": 650
+    "excluded": 651
   },
   "formulas": {
     "budget_net_sales": "Sheet Gross Sales Goal × (1 − Discounts & Returns %)",
