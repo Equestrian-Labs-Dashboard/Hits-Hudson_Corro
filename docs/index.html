@@ -124,7 +124,7 @@ body{overflow-x:hidden}.hdr{align-items:center}.hdr-left{min-width:260px}.hdr-ri
     return {
       generated_at:new Date().toISOString(),
       config:{location_id:'67063775290',location_name:'Corro Trailer 1',order_tag:'HitsHudson'},
-      assumptions:{trailer:40000,setupFurniture:800,otherCapex:1321.62,capex:42121.62,marketingBudget:1000,discountReturnRate:0.15,grossMarginTarget:0.60,nicoleWeekly:660,hotelWeekly:1600,activations:100,storageBox:21,opex:2381},
+      assumptions:{trailer:40000,setupFurniture:800,otherCapex:1321.62,capex:42121.62,marketingBudget:1000,discountReturnRate:0.15,grossMarginTarget:0.60,nicoleWeekly:660,hotelWeekly:1400,marketingActivations:638.33,others:272,opex:2970.33},
       weeks:FALLBACK_WEEKS,
       orders:[],
       stats:{scanned:0,matched:0,excluded:0},
@@ -185,7 +185,7 @@ body{overflow-x:hidden}.hdr{align-items:center}.hdr-left{min-width:260px}.hdr-ri
   }
   function projectData(r){
     var a=r.assumptions||{};var vw=validWeeks(r);
-    return {ok:true,generated:r.generated_at,period_label:vw[0].startISO+' – '+vw[vw.length-1].endISO,weeks:vw.map(function(w){return Object.assign({include_in_calculation:w.include_in_calculation!==false,actual:emptySummary()},w);}),assumptions:{weeks:vw.length,calculation_weeks:vw.filter(function(w){return w.include_in_calculation!==false;}).length,calculation_start_week:1,capex:Number(a.capex||42121.62),trailer_cost:Number(a.trailer||40000),setup_furniture_cost:Number(a.setupFurniture||800),capex_other_costs:Number(a.otherCapex||1321.62),weekly_gross_sales_budget:14000,weekly_marketing_income_budget:Number(a.marketingBudget||1000),discounts_returns_rate:Number(a.discountReturnRate||0.15),gross_margin_target:Number(a.grossMarginTarget||0.60),weekly_opex_budget:Number(a.opex||2686),nicole_weekly_cost:Number(a.nicoleWeekly||660),hotel_weekly:Number(a.hotelWeekly||1600),marketing_expense_weekly:Number(a.marketingExpenseWeekly||305),activations:Number(a.activations||100),storage_box:Number(a.storageBox||21),weekly_net_sales_budget:11900,weekly_gross_profit_budget:5608,weekly_contribution_budget:5608,goals_source:'Repository report-data.json'},stats:{matched_orders:Number((r.stats||{}).matched||0),orders_missing_hits_tag:Number((r.stats||{}).orders_missing_hits_tag||0)}};
+    return {ok:true,generated:r.generated_at,period_label:vw[0].startISO+' – '+vw[vw.length-1].endISO,weeks:vw.map(function(w){return Object.assign({include_in_calculation:w.include_in_calculation!==false,actual:emptySummary()},w);}),assumptions:{weeks:vw.length,calculation_weeks:vw.filter(function(w){return w.include_in_calculation!==false;}).length,calculation_start_week:1,capex:Number(a.capex||42121.62),trailer_cost:Number(a.trailer||40000),setup_furniture_cost:Number(a.setupFurniture||800),capex_other_costs:Number(a.otherCapex||1321.62),weekly_gross_sales_budget:14000,weekly_marketing_income_budget:Number(a.marketingBudget||1000),discounts_returns_rate:Number(a.discountReturnRate||0.15),gross_margin_target:Number(a.grossMarginTarget||0.60),weekly_opex_budget:Number(a.opex||2970.33),nicole_weekly_cost:Number(a.nicoleWeekly||660),hotel_weekly:Number(a.hotelWeekly||1400),marketing_activations:Number(a.marketingActivations||638.33),others:Number(a.others||272),weekly_net_sales_budget:11900,weekly_gross_profit_budget:5608,weekly_contribution_budget:5608,goals_source:'Repository report-data.json'},stats:{matched_orders:Number((r.stats||{}).matched||0),orders_missing_hits_tag:Number((r.stats||{}).orders_missing_hits_tag||0)}};
   }
   function runner(){
     var ok=function(){},fail=function(e){console.error(e);};
@@ -335,7 +335,7 @@ window.setBudget=function(k,val){localStorage.setItem(budgetKey(k),String(Number
 function loadProjectData(){var btn=document.getElementById('refreshBtn');if(btn)btn.disabled=true;document.getElementById('main').innerHTML='<div class="loading"><div class="spinner"></div>Loading 12-week calculation report...</div>';google.script.run.withSuccessHandler(function(data){if(btn)btn.disabled=false;if(!data||data.error){showError(data?data.error:'Empty response');return;}currentData=data;renderProject(data);}).withFailureHandler(function(err){if(btn)btn.disabled=false;showError(err.message||String(err));}).getHitsProjectData(projectParamsFromUI());}
 function fmt0(n){n=Number(n||0);return '$'+Math.round(n).toLocaleString();}
 function fmtPlain(n){return Math.round(Number(n||0)).toLocaleString();}
-function assumptionInput(label,key,val,suffix){suffix=suffix||'';return '<tr class="editable-assumption"><td>'+escHtml(label)+'<div class="odate">Editable budget assumption</div></td><td><input class="assumption-input" type="number" step="0.01" value="'+Number(val||0)+'" data-key="'+escHtml(key)+'" oninput="setBudget(this.dataset.key,this.value)" onchange="setBudget(this.dataset.key,this.value)">'+escHtml(suffix)+'</td></tr>';}
+function assumptionInput(label,key,val,suffix,note){suffix=suffix||'';note=note||'Editable budget assumption';return '<tr class="editable-assumption"><td>'+escHtml(label)+'<div class="odate">'+escHtml(note)+'</div></td><td><input class="assumption-input" type="number" step="0.01" value="'+Number(val||0)+'" data-key="'+escHtml(key)+'" onchange="setBudget(this.dataset.key,this.value)" onfocus="this.select()">'+escHtml(suffix)+'</td></tr>';}
 function assumptionRow(label,val,cls,note){return '<tr class="'+(cls||'')+'"><td>'+escHtml(label)+(note?'<div class="odate">'+escHtml(note)+'</div>':'')+'</td><td>'+val+'</td></tr>';}
 function sectionRow(label){return '<tr class="section-row"><td colspan="2">'+escHtml(label)+'</td></tr>';}
 function buildBudgetModel(a){
@@ -353,11 +353,10 @@ function buildBudgetModel(a){
   m.discountRate=getBudget('discounts_returns_pct',((a.discounts_returns_rate||0.15)*100))/100;
   m.grossMargin=getBudget('gross_margin_pct',((a.gross_margin_target||0.60)*100))/100;
   m.nicole=getBudget('nicole_weekly_cost',a.nicole_weekly_cost||660);
-  m.hotel=getBudget('hotel_weekly',a.hotel_weekly||1600);
-  m.marketingExpense=getBudget('marketing_expense_weekly',a.marketing_expense_weekly||305);
-  m.activations=getBudget('activations',a.activations||100);
-  m.storage=getBudget('storage_box',a.storage_box||21);
-  m.opex=m.nicole+m.hotel+m.marketingExpense+m.activations+m.storage;
+  m.hotel=getBudget('hotel_weekly',a.hotel_weekly||1400);
+  m.marketingActivations=getBudget('marketing_activations',a.marketing_activations||638.33);
+  m.others=getBudget('others',a.others||272);
+  m.opex=m.nicole+m.hotel+m.marketingActivations+m.others;
   m.goalsSource=a.goals_source||'Repository report-data.json';
   m.grossProfitGoal=Number(a.weekly_gross_profit_budget||5608);
   m.weeklyContributionGoal=Number(a.weekly_contribution_budget||5608);
@@ -392,7 +391,7 @@ function renderProject(data){
     +sectionRow('CAPEX')
     +assumptionInput('Trailer','trailer',m.trailer)
     +assumptionInput('Set-Up Furniture','setup_furniture',m.setup)
-    +assumptionInput('Other CAPEX Costs','other_capex_costs',m.otherCapex)
+    +assumptionInput('Other CAPEX Costs','other_capex_costs',m.otherCapex,'','Manual amount from the prior model; detailed source is pending confirmation.')
     +assumptionRow('CAPEX',fmt0(m.capex),'total-row computed-assumption')
     +sectionRow('SALES')
     +assumptionRow('Weekly Gross Sales Goal','Repository data','sheet-goal','Agreed weekly target. Configured at $14,000 in report data.')
@@ -404,9 +403,8 @@ function renderProject(data){
     +sectionRow('OPEX')
     +assumptionInput('Nicole Weekly Cost','nicole_weekly_cost',m.nicole)
     +assumptionInput('Hotel Weekly','hotel_weekly',m.hotel)
-    +assumptionInput('Marketing Expense','marketing_expense_weekly',m.marketingExpense)
-    +assumptionInput('Activations','activations',m.activations)
-    +assumptionInput('Storage Box','storage_box',m.storage)
+    +assumptionInput('Marketing / Activations','marketing_activations',m.marketingActivations,'','Activations $100 + Wines $305 + VistaPrint $138.22 + Price Chopper $53.88 + $41.23')
+    +assumptionInput('Others','others',m.others,'','Cleaners $125 + $125 + Storage Box $22')
     +assumptionRow('OPEX',fmt0(m.opex),'total-row computed-assumption')
     +sectionRow('PROFIT - Calculation Week Reference')
     +assumptionRow('Net Sales',fmt0(m.netSales),'computed-assumption')
@@ -472,13 +470,13 @@ function renderProject(data){
       +'<td class="actual-col sales-variance"></td>'
       
       +'<td class="calc-col catchup-target"></td>'
-      +'<td class="manual-col"><input type="number" value="'+marketing+'" data-week="'+w.week+'" data-type="marketing" oninput="setManual(this.dataset.week,this.dataset.type,this.value)" onchange="setManual(this.dataset.week,this.dataset.type,this.value)"></td>'
+      +'<td class="manual-col"><input type="number" value="'+marketing+'" data-week="'+w.week+'" data-type="marketing" onchange="setManual(this.dataset.week,this.dataset.type,this.value)" onfocus="this.select()"></td>'
       +'<td class="actual-col '+(hasActual?'':'muted-cell')+'">'+fmt0(act.discounts)+'</td>'
       +'<td class="actual-col '+(hasActual?'':'muted-cell')+'">'+fmt0(act.returns)+'</td>'
       +'<td class="actual-col '+(hasActual?'':'muted-cell')+'">'+fmt0(act.net_sales)+'</td>'
       +'<td class="actual-col '+(hasActual?'':'muted-cell')+'">'+fmtPct(act.gross_margin)+'</td>'
       +'<td class="actual-col '+(hasActual?'':'muted-cell')+'">'+fmt0(act.gross_profit)+'</td>'
-      +'<td class="manual-col"><input type="number" value="'+opex+'" data-week="'+w.week+'" data-type="opex" oninput="setManual(this.dataset.week,this.dataset.type,this.value)" onchange="setManual(this.dataset.week,this.dataset.type,this.value)"></td>'
+      +'<td class="manual-col"><input type="number" value="'+opex+'" data-week="'+w.week+'" data-type="opex" onchange="setManual(this.dataset.week,this.dataset.type,this.value)" onfocus="this.select()"></td>'
       +'<td class="calc-col weekly-contribution gap-left"></td>'
       +'<td class="calc-col '+(budgetCum>=0?'good':'bad')+'">'+fmt0(budgetCum)+'</td>'
       +'<td class="calc-col actual-cum"></td>'

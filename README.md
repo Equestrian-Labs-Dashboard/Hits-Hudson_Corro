@@ -25,3 +25,24 @@ Las metas están en `config/goals.json`. El diseño está en `docs/index.html` y
 
 ## Fix for empty week error
 The included placeholder report now contains all configured weeks, so the page no longer crashes before the first Shopify refresh. Run the `Update HITS Hudson report` workflow to replace zero values with live Shopify data.
+
+
+## OPEX correction requested by Ceci
+
+The original design and payback logic remain unchanged. The weekly OPEX assumptions are now:
+
+- Nicole Weekly Cost: $660
+- Hotel Weekly: $1,400
+- Marketing / Activations: $638.33
+  - Existing Activations: $100
+  - Wines: $305
+  - VistaPrint: $138.22
+  - Price Chopper (Snack Shack produce): $53.88 and $41.23
+- Others: $272
+  - Cleaners: $125 and $125
+  - Storage Box: $22
+- Total OPEX: $2,970.33
+
+The editable number inputs now save on change/blur instead of recalculating on every keystroke, preventing values from disappearing while they are being edited.
+
+`Other CAPEX Costs` remains $1,321.62. The repository does not contain its detailed breakdown, so the interface identifies it as a manual amount pending confirmation.

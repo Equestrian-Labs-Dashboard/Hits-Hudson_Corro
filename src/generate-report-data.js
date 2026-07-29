@@ -29,13 +29,23 @@ const MODEL = {
   discountReturnRate: 0.15,
   grossMarginTarget: 0.60,
   nicoleWeekly: 660,
-  hotelWeekly: 1600,
-  marketingExpenseWeekly: 305,
-  activations: 100,
-  storageBox: 21
+  hotelWeekly: 1400,
+  marketingActivations: 638.33,
+  others: 272,
+  marketingActivationsDetail: {
+    activations: 100,
+    wines: 305,
+    vistaPrint: 138.22,
+    priceChopperSnackShackProduce: [53.88, 41.23]
+  },
+  othersDetail: {
+    cleaners: [125, 125],
+    storageBox: 22
+  },
+  otherCapexNote: 'Manual amount from the prior model; detailed source is pending confirmation.'
 };
 MODEL.capex = MODEL.trailer + MODEL.setupFurniture + MODEL.otherCapex;
-MODEL.opex = MODEL.nicoleWeekly + MODEL.hotelWeekly + MODEL.marketingExpenseWeekly + MODEL.activations + MODEL.storageBox;
+MODEL.opex = MODEL.nicoleWeekly + MODEL.hotelWeekly + MODEL.marketingActivations + MODEL.others;
 
 const round2 = (n) => Math.round((Number(n || 0) + Number.EPSILON) * 100) / 100;
 const money = (set, fallback = 0) => round2(set?.shopMoney?.amount ?? fallback);
