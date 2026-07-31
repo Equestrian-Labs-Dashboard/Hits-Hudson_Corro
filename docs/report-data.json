@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T12:18:16.216Z",
+  "generated_at": "2026-07-31T15:29:58.745Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -180,15 +180,15 @@
       "endISO": "2026-08-02",
       "goal": 14000,
       "actual": {
-        "gross_sales": 1092.11,
+        "gross_sales": 1302.25,
         "discounts": 75.48,
         "returns": 0,
-        "net_sales": 1016.63,
-        "gross_profit": 498.29,
-        "total_orders": 10,
-        "units": 18,
-        "cogs": 518.34,
-        "gross_margin": 0.4901389886192617
+        "net_sales": 1226.77,
+        "gross_profit": 552.9,
+        "total_orders": 12,
+        "units": 23,
+        "cogs": 673.87,
+        "gross_margin": 0.4506957294358356
       }
     },
     {
@@ -244,6 +244,50 @@
     }
   ],
   "orders": [
+    {
+      "order_id": "154254",
+      "order_date": "2026-07-31T14:57:22Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "N/A",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "gross_sales": 151.14,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 151.14,
+      "shipping_charges": 0,
+      "taxes": 12.1,
+      "total_sales": 163.24,
+      "units": 4,
+      "cogs": 117.21,
+      "gross_profit": 33.93,
+      "gross_margin": 0.22449384676458914
+    },
+    {
+      "order_id": "154253",
+      "order_date": "2026-07-31T14:47:59Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "Catherine Ingino",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "gross_sales": 59,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 59,
+      "shipping_charges": 0,
+      "taxes": 4.72,
+      "total_sales": 63.72,
+      "units": 1,
+      "cogs": 38.32,
+      "gross_profit": 20.68,
+      "gross_margin": 0.35050847457627116
+    },
     {
       "order_id": "154248",
       "order_date": "2026-07-30T21:05:12Z",
@@ -5548,9 +5592,9 @@
     }
   ],
   "stats": {
-    "scanned": 890,
-    "matched": 230,
-    "excluded": 660
+    "scanned": 895,
+    "matched": 232,
+    "excluded": 663
   },
   "formulas": {
     "budget_net_sales": "Sheet Gross Sales Goal × (1 − Discounts & Returns %)",
