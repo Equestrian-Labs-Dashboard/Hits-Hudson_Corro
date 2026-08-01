@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T19:37:20.076Z",
+  "generated_at": "2026-08-01T21:10:40.185Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -251,7 +251,7 @@
       "tag_has_hits": false,
       "customer": "Maria Raptos",
       "customer_email": "",
-      "payment_status": "AUTHORIZED",
+      "payment_status": "PAID",
       "fulfillment_status": "FULFILLED",
       "location": "Corro Trailer 1, Corro Trailer 1",
       "gross_sales": 227.84,
@@ -260,7 +260,7 @@
       "net_sales": 227.84,
       "shipping_charges": 0,
       "taxes": 18.22,
-      "total_sales": 0,
+      "total_sales": 246.06,
       "units": 2,
       "cogs": 108.2,
       "gross_profit": 119.64,
@@ -6076,9 +6076,9 @@
     }
   ],
   "stats": {
-    "scanned": 925,
+    "scanned": 926,
     "matched": 254,
-    "excluded": 671
+    "excluded": 672
   },
   "formulas": {
     "budget_net_sales": "Sheet Gross Sales Goal × (1 − Discounts & Returns %)",
