@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T18:14:54.864Z",
+  "generated_at": "2026-08-02T19:37:51.912Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -251,7 +251,7 @@
       "tag_has_hits": false,
       "customer": "N/A",
       "customer_email": "",
-      "payment_status": "AUTHORIZED",
+      "payment_status": "PAID",
       "fulfillment_status": "FULFILLED",
       "location": "Corro Trailer 1, Corro Trailer 1",
       "gross_sales": 168,
@@ -260,7 +260,7 @@
       "net_sales": 142.8,
       "shipping_charges": 0,
       "taxes": 11.42,
-      "total_sales": 0,
+      "total_sales": 154.22,
       "units": 1,
       "cogs": 55,
       "gross_profit": 87.8,
