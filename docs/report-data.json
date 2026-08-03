@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-03T11:45:58.925Z",
+  "generated_at": "2026-08-03T15:18:04.526Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -3289,7 +3289,7 @@
       "tags": [],
       "tag_has_hits": false,
       "customer": "maarten huygens",
-      "customer_email": "jackiefitxpatrick@mhhorsesales.com",
+      "customer_email": "jackiefitzpatrick@mhhorsesales.com",
       "payment_status": "PAID",
       "fulfillment_status": "FULFILLED",
       "location": "Corro Trailer 1, Corro Trailer 1",
@@ -6296,9 +6296,9 @@
     }
   ],
   "stats": {
-    "scanned": 948,
+    "scanned": 952,
     "matched": 264,
-    "excluded": 684
+    "excluded": 688
   },
   "formulas": {
     "budget_net_sales": "Sheet Gross Sales Goal × (1 − Discounts & Returns %)",
