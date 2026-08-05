@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T12:18:06.455Z",
+  "generated_at": "2026-08-05T15:29:18.001Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -202,15 +202,15 @@
       "endISO": "2026-08-09",
       "goal": 14000,
       "actual": {
-        "gross_sales": 0,
-        "discounts": 0,
+        "gross_sales": 1143.74,
+        "discounts": 494.92,
         "returns": 0,
-        "net_sales": 0,
-        "gross_profit": 0,
-        "total_orders": 0,
-        "units": 0,
-        "cogs": 0,
-        "gross_margin": 0
+        "net_sales": 648.82,
+        "gross_profit": 120.34,
+        "total_orders": 2,
+        "units": 20,
+        "cogs": 528.48,
+        "gross_margin": 0.18547517030917665
       }
     },
     {
@@ -249,6 +249,55 @@
     }
   ],
   "orders": [
+    {
+      "order_id": "154327",
+      "order_date": "2026-08-04T21:02:56Z",
+      "tags": [
+        "Concierge",
+        "JS"
+      ],
+      "tag_has_hits": false,
+      "customer": "Mary Lauritsen",
+      "customer_email": "mbldressage@gmail.com",
+      "payment_status": "PAID",
+      "fulfillment_status": "PARTIALLY_FULFILLED",
+      "location": "Corro Trailer 1",
+      "gross_sales": 283.94,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 283.94,
+      "shipping_charges": 0,
+      "taxes": 23.79,
+      "total_sales": 307.73,
+      "units": 7,
+      "cogs": 163.6,
+      "gross_profit": 120.34,
+      "gross_margin": 0.42382193421145314
+    },
+    {
+      "order_id": "154325",
+      "order_date": "2026-08-04T20:24:20Z",
+      "tags": [
+        "employee"
+      ],
+      "tag_has_hits": false,
+      "customer": "Julia Stento",
+      "customer_email": "jstento1@verizon.net",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, New Wellington Warehouse",
+      "gross_sales": 859.8,
+      "discounts": 494.92,
+      "returns": 0,
+      "net_sales": 364.88,
+      "shipping_charges": 41,
+      "taxes": 0,
+      "total_sales": 405.88,
+      "units": 13,
+      "cogs": 364.88,
+      "gross_profit": 0,
+      "gross_margin": 0
+    },
     {
       "order_id": "154303",
       "order_date": "2026-08-02T18:00:16Z",
@@ -1377,7 +1426,11 @@
     {
       "order_id": "154188",
       "order_date": "2026-07-26T15:05:00Z",
-      "tags": [],
+      "tags": [
+        "commissioneligible",
+        "Concierge",
+        "NP"
+      ],
       "tag_has_hits": false,
       "customer": "Stella Buckingham",
       "customer_email": "ladystellab@icloud.com",
@@ -3176,6 +3229,7 @@
       "order_id": "154053",
       "order_date": "2026-07-18T17:42:03Z",
       "tags": [
+        "commissioneligible",
         "Concierge",
         "HitsHudson",
         "NP"
@@ -6301,9 +6355,9 @@
     }
   ],
   "stats": {
-    "scanned": 968,
-    "matched": 264,
-    "excluded": 704
+    "scanned": 971,
+    "matched": 266,
+    "excluded": 705
   },
   "formulas": {
     "budget_net_sales": "Gross Sales Goal × (1 − Discounts & Returns %)",
