@@ -46,3 +46,10 @@ The original design and payback logic remain unchanged. The weekly OPEX assumpti
 The editable number inputs now save on change/blur instead of recalculating on every keystroke, preventing values from disappearing while they are being edited.
 
 `Other CAPEX Costs` remains $1,321.62. The repository does not contain its detailed breakdown, so the interface identifies it as a manual amount pending confirmation.
+
+## August 2026 OPEX classification update
+
+- `Payroll / Personnel Weekly Cost` and `Hotel Weekly Cost` are recurring weekly costs.
+- `Marketing / Activations Total Cost` and `Others Total Cost` are one-time project costs.
+- One-time OPEX is deducted once in the first included calculation week, not every week.
+- Gross Profit remains `Net Sales × Gross Margin`; OPEX affects Weekly Contribution and payback, not Gross Profit.

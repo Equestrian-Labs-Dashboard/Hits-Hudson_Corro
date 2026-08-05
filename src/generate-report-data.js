@@ -28,10 +28,13 @@ const MODEL = {
   marketingBudget: 1000,
   discountReturnRate: 0.15,
   grossMarginTarget: 0.60,
-  nicoleWeekly: 660,
+  payrollWeekly: 660,
+  nicoleWeekly: 660, // backwards-compatible alias
   hotelWeekly: 1400,
-  marketingActivations: 638.33,
-  others: 272,
+  marketingActivationsTotal: 638.33,
+  marketingActivations: 638.33, // backwards-compatible alias
+  othersTotal: 272,
+  others: 272, // backwards-compatible alias
   marketingActivationsDetail: {
     activations: 100,
     wines: 305,
@@ -45,7 +48,9 @@ const MODEL = {
   otherCapexNote: 'Manual amount from the prior model; detailed source is pending confirmation.'
 };
 MODEL.capex = MODEL.trailer + MODEL.setupFurniture + MODEL.otherCapex;
-MODEL.opex = MODEL.nicoleWeekly + MODEL.hotelWeekly + MODEL.marketingActivations + MODEL.others;
+MODEL.weeklyOpex = MODEL.payrollWeekly + MODEL.hotelWeekly;
+MODEL.oneTimeOpex = MODEL.marketingActivationsTotal + MODEL.othersTotal;
+MODEL.opex = MODEL.weeklyOpex + MODEL.oneTimeOpex;
 
 const round2 = (n) => Math.round((Number(n || 0) + Number.EPSILON) * 100) / 100;
 const money = (set, fallback = 0) => round2(set?.shopMoney?.amount ?? fallback);
@@ -199,9 +204,13 @@ function buildReport(goals, rawOrders) {
     config: { location_id: CONFIG.locationId, location_name: CONFIG.locationName, order_tag: CONFIG.orderTag, api_version: CONFIG.apiVersion },
     assumptions: { ...MODEL }, weeks, orders: summaries, stats,
     formulas: {
-      budget_net_sales: 'Sheet Gross Sales Goal × (1 − Discounts & Returns %)',
-      actual_weekly_contribution: 'Shopify Actual Gross Profit + Manual Marketing Actual − Manual OPEX Actual',
-      actual_forecast_cumulative_cash: '−CAPEX + actual contributions for started weeks + budget contributions for future weeks',
+      budget_net_sales: 'Gross Sales Goal × (1 − Discounts & Returns %)',
+      budget_gross_profit: 'Budget Net Sales × Gross Margin %',
+      weekly_opex: 'Payroll / Personnel Weekly Cost + Hotel Weekly Cost',
+      one_time_opex: 'Marketing / Activations Total Cost + Others Total Cost; deducted once in the first included week',
+      budget_weekly_contribution: 'Budget Gross Profit + Marketing Income Budget − Weekly OPEX',
+      actual_weekly_contribution: 'Shopify Actual Gross Profit + Manual Marketing Actual − Manual Weekly OPEX Actual; one-time OPEX is deducted once',
+      actual_forecast_cumulative_cash: '−CAPEX + actual contributions for started weeks + budget contributions for future weeks − one-time OPEX once',
       actual_only_cumulative_cash: '−CAPEX + actual contributions for started weeks only',
       payback: 'First included week where cumulative cash is greater than or equal to zero'
     }

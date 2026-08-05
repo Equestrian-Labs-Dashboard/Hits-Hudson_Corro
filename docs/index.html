@@ -124,7 +124,7 @@ body{overflow-x:hidden}.hdr{align-items:center}.hdr-left{min-width:260px}.hdr-ri
     return {
       generated_at:new Date().toISOString(),
       config:{location_id:'67063775290',location_name:'Corro Trailer 1',order_tag:'HitsHudson'},
-      assumptions:{trailer:40000,setupFurniture:800,otherCapex:1321.62,capex:42121.62,marketingBudget:1000,discountReturnRate:0.15,grossMarginTarget:0.60,nicoleWeekly:660,hotelWeekly:1400,marketingActivations:638.33,others:272,opex:2970.33},
+      assumptions:{trailer:40000,setupFurniture:800,otherCapex:1321.62,capex:42121.62,marketingBudget:1000,discountReturnRate:0.15,grossMarginTarget:0.60,payrollWeekly:660,nicoleWeekly:660,hotelWeekly:1400,marketingActivationsTotal:638.33,marketingActivations:638.33,othersTotal:272,others:272,weeklyOpex:2060,oneTimeOpex:910.33,opex:2970.33},
       weeks:FALLBACK_WEEKS,
       orders:[],
       stats:{scanned:0,matched:0,excluded:0},
@@ -185,7 +185,7 @@ body{overflow-x:hidden}.hdr{align-items:center}.hdr-left{min-width:260px}.hdr-ri
   }
   function projectData(r){
     var a=r.assumptions||{};var vw=validWeeks(r);
-    return {ok:true,generated:r.generated_at,period_label:vw[0].startISO+' – '+vw[vw.length-1].endISO,weeks:vw.map(function(w){return Object.assign({include_in_calculation:w.include_in_calculation!==false,actual:emptySummary()},w);}),assumptions:{weeks:vw.length,calculation_weeks:vw.filter(function(w){return w.include_in_calculation!==false;}).length,calculation_start_week:1,capex:Number(a.capex||42121.62),trailer_cost:Number(a.trailer||40000),setup_furniture_cost:Number(a.setupFurniture||800),capex_other_costs:Number(a.otherCapex||1321.62),weekly_gross_sales_budget:14000,weekly_marketing_income_budget:Number(a.marketingBudget||1000),discounts_returns_rate:Number(a.discountReturnRate||0.15),gross_margin_target:Number(a.grossMarginTarget||0.60),weekly_opex_budget:Number(a.opex||2970.33),nicole_weekly_cost:Number(a.nicoleWeekly||660),hotel_weekly:Number(a.hotelWeekly||1400),marketing_activations:Number(a.marketingActivations||638.33),others:Number(a.others||272),weekly_net_sales_budget:11900,weekly_gross_profit_budget:5608,weekly_contribution_budget:5608,goals_source:'Repository report-data.json'},stats:{matched_orders:Number((r.stats||{}).matched||0),orders_missing_hits_tag:Number((r.stats||{}).orders_missing_hits_tag||0)}};
+    return {ok:true,generated:r.generated_at,period_label:vw[0].startISO+' – '+vw[vw.length-1].endISO,weeks:vw.map(function(w){return Object.assign({include_in_calculation:w.include_in_calculation!==false,actual:emptySummary()},w);}),assumptions:{weeks:vw.length,calculation_weeks:vw.filter(function(w){return w.include_in_calculation!==false;}).length,calculation_start_week:1,capex:Number(a.capex||42121.62),trailer_cost:Number(a.trailer||40000),setup_furniture_cost:Number(a.setupFurniture||800),capex_other_costs:Number(a.otherCapex||1321.62),weekly_gross_sales_budget:14000,weekly_marketing_income_budget:Number(a.marketingBudget||1000),discounts_returns_rate:Number(a.discountReturnRate||0.15),gross_margin_target:Number(a.grossMarginTarget||0.60),payroll_weekly_cost:Number(a.payrollWeekly||a.nicoleWeekly||660),nicole_weekly_cost:Number(a.payrollWeekly||a.nicoleWeekly||660),hotel_weekly:Number(a.hotelWeekly||1400),marketing_activations_total:Number(a.marketingActivationsTotal||a.marketingActivations||638.33),marketing_activations:Number(a.marketingActivationsTotal||a.marketingActivations||638.33),others_total:Number(a.othersTotal||a.others||272),others:Number(a.othersTotal||a.others||272),weekly_opex_budget:Number(a.weeklyOpex||2060),one_time_opex:Number(a.oneTimeOpex||910.33),total_project_opex:Number(a.opex||2970.33),weekly_net_sales_budget:11900,goals_source:'Repository report-data.json'},stats:{matched_orders:Number((r.stats||{}).matched||0),orders_missing_hits_tag:Number((r.stats||{}).orders_missing_hits_tag||0)}};
   }
   function runner(){
     var ok=function(){},fail=function(e){console.error(e);};
@@ -341,9 +341,9 @@ function sectionRow(label){return '<tr class="section-row"><td colspan="2">'+esc
 function buildBudgetModel(a){
   a=a||{};
   var m={};
-  m.weeks=Number(a.weeks||19);
-  m.calculationWeeks=Number(a.calculation_weeks||18);
-  m.calculationStartWeek=Number(a.calculation_start_week||2);
+  m.weeks=Number(a.weeks||12);
+  m.calculationWeeks=Number(a.calculation_weeks||12);
+  m.calculationStartWeek=Number(a.calculation_start_week||1);
   m.trailer=getBudget('trailer',a.trailer_cost||40000);
   m.setup=getBudget('setup_furniture',a.setup_furniture_cost||800);
   m.otherCapex=getBudget('other_capex_costs',a.capex_other_costs||1321.62);
@@ -352,14 +352,14 @@ function buildBudgetModel(a){
   m.marketing=getBudget('marketing_income',a.weekly_marketing_income_budget||1000);
   m.discountRate=getBudget('discounts_returns_pct',((a.discounts_returns_rate||0.15)*100))/100;
   m.grossMargin=getBudget('gross_margin_pct',((a.gross_margin_target||0.60)*100))/100;
-  m.nicole=getBudget('nicole_weekly_cost',a.nicole_weekly_cost||660);
+  m.payroll=getBudget('payroll_weekly_cost',a.payroll_weekly_cost||a.nicole_weekly_cost||660);
   m.hotel=getBudget('hotel_weekly',a.hotel_weekly||1400);
-  m.marketingActivations=getBudget('marketing_activations',a.marketing_activations||638.33);
-  m.others=getBudget('others',a.others||272);
-  m.opex=m.nicole+m.hotel+m.marketingActivations+m.others;
+  m.marketingActivationsTotal=getBudget('marketing_activations_total',a.marketing_activations_total||a.marketing_activations||638.33);
+  m.othersTotal=getBudget('others_total',a.others_total||a.others||272);
+  m.weeklyOpex=m.payroll+m.hotel;
+  m.oneTimeOpex=m.marketingActivationsTotal+m.othersTotal;
+  m.totalProjectOpex=m.weeklyOpex+m.oneTimeOpex;
   m.goalsSource=a.goals_source||'Repository report-data.json';
-  m.grossProfitGoal=Number(a.weekly_gross_profit_budget||5608);
-  m.weeklyContributionGoal=Number(a.weekly_contribution_budget||5608);
   var weeks=(currentData&&currentData.weeks)||[];
   var firstCalcWeek=calcWeeks(weeks)[0]||weeks[0]||null;
   var firstGoal=firstCalcWeek?Number(firstCalcWeek.goal||m.fallbackGrossSales):m.fallbackGrossSales;
@@ -368,15 +368,17 @@ function buildBudgetModel(a){
   m.netSales=firstBudget.net_sales;
   m.grossProfit=firstBudget.gross_profit;
   m.weeklyContribution=firstBudget.weekly_contribution;
-  m.paybackWeeks=m.weeklyContribution>0?(m.capex/m.weeklyContribution):0;
+  m.firstWeekContribution=firstBudget.weekly_contribution-m.oneTimeOpex;
+  var remainingAfterFirst=m.capex-m.firstWeekContribution;
+  m.paybackWeeks=m.weeklyContribution>0?(1+Math.max(0,remainingAfterFirst)/m.weeklyContribution):0;
   return m;
 }
 function budgetFromGoal(goal,m){
   goal=Number(goal||m.fallbackGrossSales||0);
   var net=goal*(1-m.discountRate);
-  var gp=Number(m.grossProfitGoal||5608);
-  var contribution=Number(m.weeklyContributionGoal||gp);
-  return{gross_sales:goal,marketing_income:m.marketing,discounts_returns_rate:m.discountRate,net_sales:net,gross_margin:m.grossMargin,gross_profit:gp,opex:m.opex,weekly_contribution:contribution};
+  var gp=net*m.grossMargin;
+  var contribution=gp+m.marketing-m.weeklyOpex;
+  return{gross_sales:goal,marketing_income:m.marketing,discounts_returns_rate:m.discountRate,net_sales:net,gross_margin:m.grossMargin,gross_profit:gp,weekly_opex:m.weeklyOpex,opex:m.weeklyOpex,one_time_opex:m.oneTimeOpex,weekly_contribution:contribution};
 }
 function budgetForWeek(w,m){return budgetFromGoal((w&&w.goal)!=null?w.goal:m.fallbackGrossSales,m);}
 function isCalcWeek(w){return !(w&&w.include_in_calculation===false) && !isManualOffWeek(w);}
@@ -400,21 +402,25 @@ function renderProject(data){
     +assumptionInput('Discounts & Returns %','discounts_returns_pct',m.discountRate*100,'%')
     +assumptionInput('Gross Margin %','gross_margin_pct',m.grossMargin*100,'%')
     +assumptionRow('First Calculation Week Goal',fmt0(((calcWeeks(weeks)[0]||weeks[0])&&((calcWeeks(weeks)[0]||weeks[0]).goal))||m.fallbackGrossSales),'computed-assumption','From repository report data. 12 formal show weeks are included; Use the Off Week checkbox to exclude non-show weeks.')
-    +sectionRow('OPEX')
-    +assumptionInput('Nicole Weekly Cost','nicole_weekly_cost',m.nicole)
-    +assumptionInput('Hotel Weekly','hotel_weekly',m.hotel)
-    +assumptionInput('Marketing / Activations','marketing_activations',m.marketingActivations,'','Activations $100 + Wines $305 + VistaPrint $138.22 + Price Chopper $53.88 + $41.23')
-    +assumptionInput('Others','others',m.others,'','Cleaners $125 + $125 + Storage Box $22')
-    +assumptionRow('OPEX',fmt0(m.opex),'total-row computed-assumption')
+    +sectionRow('WEEKLY OPEX')
+    +assumptionInput('Payroll / Personnel Weekly Cost','payroll_weekly_cost',m.payroll,'','Weekly recurring cost. Editable for one or more people.')
+    +assumptionInput('Hotel Weekly Cost','hotel_weekly',m.hotel,'','Weekly recurring hotel cost.')
+    +assumptionRow('Total Weekly OPEX',fmt0(m.weeklyOpex),'total-row computed-assumption','Repeated once for every included show week.')
+    +sectionRow('ONE-TIME OPEX')
+    +assumptionInput('Marketing / Activations Total Cost','marketing_activations_total',m.marketingActivationsTotal,'','One-time total: Activations $100 + Wines $305 + VistaPrint $138.22 + Price Chopper $53.88 + $41.23.')
+    +assumptionInput('Others Total Cost','others_total',m.othersTotal,'','One-time total: Cleaners $125 + $125 + Storage Box $22.')
+    +assumptionRow('Total One-Time OPEX',fmt0(m.oneTimeOpex),'total-row computed-assumption','Deducted only once in the first included calculation week.')
     +sectionRow('PROFIT - Calculation Week Reference')
     +assumptionRow('Net Sales',fmt0(m.netSales),'computed-assumption')
-    +assumptionRow('Gross Profit',fmt0(m.grossProfit),'computed-assumption')
-    +assumptionRow('Total Weekly OPEX',fmt0(m.opex),'computed-assumption')
-    +assumptionRow('Weekly Contribution',fmt0(m.weeklyContribution),'total-row computed-assumption')
+    +assumptionRow('Gross Profit',fmt0(m.grossProfit),'computed-assumption','Net Sales × Gross Margin. OPEX does not change Gross Profit.')
+    +assumptionRow('Weekly Recurring OPEX',fmt0(m.weeklyOpex),'computed-assumption')
+    +assumptionRow('Recurring Weekly Contribution',fmt0(m.weeklyContribution),'total-row computed-assumption','Gross Profit + Marketing Income − Weekly OPEX.')
+    +assumptionRow('First Included Week Contribution',fmt0(m.firstWeekContribution),'computed-assumption','Recurring contribution minus the one-time OPEX.')
     +sectionRow('')
-    +assumptionRow('Payback Using Calculation Goal',m.paybackWeeks?m.paybackWeeks.toFixed(1):'Not reached','total-row computed-assumption');
+    +assumptionRow('Estimated Payback Using Budget',m.paybackWeeks?m.paybackWeeks.toFixed(1)+' weeks':'Not reached','total-row computed-assumption');
   var cumulativeBudget=-m.capex;
-  var cumRows=weeks.map(function(w){var b=budgetForWeek(w,m);if(isCalcWeek(w)){cumulativeBudget+=b.weekly_contribution;}var note=isCalcWeek(w)?'Included':'Off Week excluded';return '<tr><td>'+w.week+'<div class="odate">'+note+'</div>'+offWeekControl(w)+'</td><td>'+fmt0(b.gross_sales)+'</td><td class="'+(cumulativeBudget>=0?'good':'bad')+'">'+fmt0(cumulativeBudget)+'</td></tr>';}).join('');
+  var oneTimeBudgetApplied=false;
+  var cumRows=weeks.map(function(w){var b=budgetForWeek(w,m);var oneTimeThisWeek=0;if(isCalcWeek(w)){if(!oneTimeBudgetApplied){oneTimeThisWeek=m.oneTimeOpex;oneTimeBudgetApplied=true;}cumulativeBudget+=b.weekly_contribution-oneTimeThisWeek;}var note=isCalcWeek(w)?('Included'+(oneTimeThisWeek?' · includes one-time OPEX '+fmt0(oneTimeThisWeek):'')):'Off Week excluded';return '<tr><td>'+w.week+'<div class="odate">'+note+'</div>'+offWeekControl(w)+'</td><td>'+fmt0(b.gross_sales)+'</td><td class="'+(cumulativeBudget>=0?'good':'bad')+'">'+fmt0(cumulativeBudget)+'</td></tr>';}).join('');
   var totals={gross:0, net:0, gp:0, orders:0, actualWeeks:0};
   weeks.forEach(function(w){if(!isCalcWeek(w))return;var act=w.actual||{};var hasActual=!!(act.gross_sales||act.net_sales||act.total_orders);if(hasActual){totals.actualWeeks++;totals.gross+=Number(act.gross_sales||0);totals.net+=Number(act.net_sales||0);totals.gp+=Number(act.gross_profit||0);totals.orders+=Number(act.total_orders||0);}});
   var goalTotal=totalGoalSales(weeks,m);
@@ -443,15 +449,16 @@ function renderProject(data){
       +'<td class="'+(variance<0?'miss':'met')+'">'+(variance>=0?'+':'')+fmt0(variance)+'</td></tr>';
   }).join('');
   var performance='<div class="perf-card"><div class="perf-title"><b>Weekly Performance — Goal vs Shopify Actual</b><span>Gross Sales / Net Sales / Gross Profit by week. Goals come from repository data; actuals come from Shopify.</span></div><div class="perf-wrap"><table class="perf-table"><thead><tr><th>Week</th><th>Gross Sales Goal</th><th>Actual Gross Sales</th><th>% Achievement</th><th>Net Sales Goal</th><th>Actual Net Sales</th><th>Gross Profit Goal</th><th>Actual Gross Profit</th><th>Gap / Over Goal</th></tr></thead><tbody>'+perfRows+'</tbody></table></div></div>';
-  var model='<div class="model-grid"><div class="model-card"><div class="model-title">CAPEX & Budget Assumptions<div class="model-subtitle">Weekly gross sales goals come from repository report data. Profit / Gross Profit goal is $5,608 per calculation week.</div></div><table class="mini-table"><tbody>'+capexRows+'</tbody></table><div class="formula-note">Shopify supplies the real actuals: gross sales, discounts, returns, net sales, gross profit, gross margin and orders. Weekly goals are loaded from repository report data. Actual Gross Sales, Net Sales and Gross Profit come from Shopify. The report includes orders assigned to Corro Trailer 1 warehouse/location OR orders with the Shopify order tag HitsHudson. Order tags are shown for audit.</div></div><div class="model-card"><div class="model-title">12-Week Budget Cumulative Cash<div class="model-subtitle">Calculates the 12 formal show weeks only. Use the Off Week checkbox to exclude non-show weeks.</div></div><table class="mini-table"><thead><tr><th>Week</th><th>Weekly Goal</th><th>Cumulative Cash</th></tr></thead><tbody>'+cumRows+'</tbody></table></div></div>';
+  var model='<div class="model-grid"><div class="model-card"><div class="model-title">CAPEX & Budget Assumptions<div class="model-subtitle">Weekly gross sales goals come from repository report data. Gross Profit is calculated from Net Sales × Gross Margin; weekly and one-time OPEX are treated separately.</div></div><table class="mini-table"><tbody>'+capexRows+'</tbody></table><div class="formula-note">Shopify supplies the real actuals: gross sales, discounts, returns, net sales, gross profit, gross margin and orders. Weekly goals are loaded from repository report data. Actual Gross Sales, Net Sales and Gross Profit come from Shopify. The report includes orders assigned to Corro Trailer 1 warehouse/location OR orders with the Shopify order tag HitsHudson. Order tags are shown for audit.</div></div><div class="model-card"><div class="model-title">12-Week Budget Cumulative Cash<div class="model-subtitle">Calculates the 12 formal show weeks only. Use the Off Week checkbox to exclude non-show weeks.</div></div><table class="mini-table"><thead><tr><th>Week</th><th>Weekly Goal</th><th>Cumulative Cash</th></tr></thead><tbody>'+cumRows+'</tbody></table></div></div>';
   var explainer='';
-  var head='<div class="tracking-title"><div class="slbl">12-week calculation — goal vs Shopify actual</div><div class="tracking-note">Weekly goals are loaded from repository report data. Use the Off Week checkbox to exclude non-show weeks from goals, payback and catch-up. Use the Off Week checkbox to exclude non-show weeks. Real actuals come from Shopify.</div></div><div class="tblwrap project-scroll"><table class="pay-table"><thead><tr class="group-head"><th rowspan="2">Week</th><th colspan="7">Budget / Goal</th><th colspan="11">Weekly Actuals, Goal Check & Catch-up</th><th colspan="3">Payback</th></tr><tr class="sub-head"><th class="budget-col">Gross Sales Goal</th><th class="budget-col">Marketing Budget</th><th class="budget-col">Disc/Returns Top</th><th class="budget-col">Net Sales Budget</th><th class="budget-col">GM Target</th><th class="budget-col">OPEX Budget</th><th class="budget-col">Weekly Contribution Budget</th><th class="actual-col gap-left">Shopify Gross Sales Actual</th><th class="actual-col">% Achievement</th><th class="actual-col">Sales Gap / Over Goal</th><th class="calc-col">Next Week Sales Target</th><th class="manual-col">Manual: Marketing Actual</th><th class="actual-col">Discounts</th><th class="actual-col">Returns</th><th class="actual-col">Net Sales</th><th class="actual-col">Gross Margin</th><th class="actual-col">Gross Profit</th><th class="manual-col">Manual: OPEX Actual</th><th class="calc-col gap-left">Weekly Contribution</th><th class="calc-col">Budget Cum. Cash</th><th class="calc-col">Actual/Forecast Cum. Cash</th><th class="actual-col">Orders</th></tr></thead><tbody>';
+  var head='<div class="tracking-title"><div class="slbl">12-week calculation — goal vs Shopify actual</div><div class="tracking-note">Weekly goals are loaded from repository report data. Use the Off Week checkbox to exclude non-show weeks from goals, payback and catch-up. Use the Off Week checkbox to exclude non-show weeks. Real actuals come from Shopify.</div></div><div class="tblwrap project-scroll"><table class="pay-table"><thead><tr class="group-head"><th rowspan="2">Week</th><th colspan="7">Budget / Goal</th><th colspan="11">Weekly Actuals, Goal Check & Catch-up</th><th colspan="3">Payback</th></tr><tr class="sub-head"><th class="budget-col">Gross Sales Goal</th><th class="budget-col">Marketing Budget</th><th class="budget-col">Disc/Returns Top</th><th class="budget-col">Net Sales Budget</th><th class="budget-col">GM Target</th><th class="budget-col">Weekly Weekly OPEX Budget</th><th class="budget-col">Weekly Contribution Budget</th><th class="actual-col gap-left">Shopify Gross Sales Actual</th><th class="actual-col">% Achievement</th><th class="actual-col">Sales Gap / Over Goal</th><th class="calc-col">Next Week Sales Target</th><th class="manual-col">Manual: Marketing Actual</th><th class="actual-col">Discounts</th><th class="actual-col">Returns</th><th class="actual-col">Net Sales</th><th class="actual-col">Gross Margin</th><th class="actual-col">Gross Profit</th><th class="manual-col">Manual: Weekly OPEX Actual</th><th class="calc-col gap-left">Weekly Contribution</th><th class="calc-col">Budget Cum. Cash</th><th class="calc-col">Actual/Forecast Cum. Cash</th><th class="actual-col">Orders</th></tr></thead><tbody>';
   var budgetCum=-m.capex;
+  var oneTimeBudgetTableApplied=false;
   var today=new Date();today=new Date(today.getFullYear(),today.getMonth(),today.getDate());
   var body=weeks.map(function(w){
-    var act=w.actual||{};var b=budgetForWeek(w,m);if(isCalcWeek(w)){budgetCum+=b.weekly_contribution;}
+    var act=w.actual||{};var b=budgetForWeek(w,m);var oneTimeBudgetThisWeek=0;if(isCalcWeek(w)){if(!oneTimeBudgetTableApplied){oneTimeBudgetThisWeek=m.oneTimeOpex;oneTimeBudgetTableApplied=true;}budgetCum+=b.weekly_contribution-oneTimeBudgetThisWeek;}
     var manualMarketingDefault=0;
-    var manualOpexDefault=b.opex||0;
+    var manualOpexDefault=b.weekly_opex||b.opex||0;
     var marketing=getManual(w.week,'marketing',manualMarketingDefault);
     var opex=getManual(w.week,'opex',manualOpexDefault);
     var hasActual=!!(act.gross_sales||act.net_sales||act.total_orders);
@@ -500,6 +507,7 @@ function recalcProjectTable(){
   var firstCalc=calcWeeks(weeks)[0]||weeks[0];
   var nextCatchupTarget=firstCalc?budgetForWeek(firstCalc,m).gross_sales:m.fallbackGrossSales;
   var today=new Date();today=new Date(today.getFullYear(),today.getMonth(),today.getDate());
+  var oneTimeActualForecastApplied=false;
   document.querySelectorAll('.pay-table tbody tr').forEach(function(row,i){
     var w=weeks[i];if(!w)return;
     var b=budgetForWeek(w,m);
@@ -508,7 +516,7 @@ function recalcProjectTable(){
     var nextB=budgetForWeek(nextCalcWeek,m);
     var act=(w&&w.actual)||{};
     var marketing=getManual(w.week,'marketing',0);
-    var opex=getManual(w.week,'opex',b.opex);
+    var opex=getManual(w.week,'opex',b.weekly_opex||b.opex);
     var hasShopifyActual=!!(act.gross_sales||act.net_sales||act.total_orders||act.discounts||act.returns||act.gross_profit);
     var hasManualActual=hasManual(w.week,'marketing')||hasManual(w.week,'opex');
     var weekStart=new Date(String(w.startISO)+'T00:00:00');
@@ -535,7 +543,9 @@ function recalcProjectTable(){
       nextCatchupTarget=goal+cumulativeSalesShortfall;
     }
 
-    var contribution=useActualLine?((Number(act.gross_profit||0))+marketing-opex):(b.weekly_contribution||0);
+    var oneTimeThisWeek=0;
+    if(calc&&!oneTimeActualForecastApplied){oneTimeThisWeek=m.oneTimeOpex;oneTimeActualForecastApplied=true;}
+    var contribution=(useActualLine?((Number(act.gross_profit||0))+marketing-opex):(b.weekly_contribution||0))-oneTimeThisWeek;
     if(calc){
       totalRevenue+=useActualLine?(actualGross+marketing):(b.gross_sales+b.marketing_income);
       cum+=contribution;
@@ -571,7 +581,7 @@ function recalcProjectTable(){
   if(catchup)catchup.textContent=fmt0(nextCatchupTarget);
   var summary=document.getElementById('projectSummary');
   if(summary){
-    summary.innerHTML='<span>Actual/forecast payback:</span> '+payback+' · <span>Budget payback:</span> recalculated from repository goals · <span>Goals source:</span> '+escHtml((currentData.assumptions||{}).goals_source||'Repository report-data.json')+' · <span>Next week catch-up sales target:</span> '+fmt0(nextCatchupTarget)+' · <span>Calculation weeks with Shopify actuals:</span> '+actualWeeks+'/'+calcWeeks(weeks).length+' · <span>12-week actual/forecast revenue:</span> '+fmt0(totalRevenue)+' · <span>Matched orders:</span> '+escHtml(s.matched_orders||0)+' · <span>Shopify inclusion:</span> Corro Trailer 1 warehouse/location OR order tag HitsHudson. · <span>Orders missing HitsHudson tag:</span> '+escHtml(s.orders_missing_hits_tag||0)+'.';
+    summary.innerHTML='<span>Actual/forecast payback:</span> '+payback+' · <span>Budget payback:</span> recalculated with weekly recurring OPEX and one-time OPEX deducted once · <span>Goals source:</span> '+escHtml((currentData.assumptions||{}).goals_source||'Repository report-data.json')+' · <span>Next week catch-up sales target:</span> '+fmt0(nextCatchupTarget)+' · <span>Calculation weeks with Shopify actuals:</span> '+actualWeeks+'/'+calcWeeks(weeks).length+' · <span>12-week actual/forecast revenue:</span> '+fmt0(totalRevenue)+' · <span>Matched orders:</span> '+escHtml(s.matched_orders||0)+' · <span>Shopify inclusion:</span> Corro Trailer 1 warehouse/location OR order tag HitsHudson. · <span>Orders missing HitsHudson tag:</span> '+escHtml(s.orders_missing_hits_tag||0)+'.';
   }
 }
 function applyModeUI(){
