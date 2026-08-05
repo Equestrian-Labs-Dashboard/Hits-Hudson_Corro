@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T15:29:18.001Z",
+  "generated_at": "2026-08-05T17:54:49.537Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -202,15 +202,15 @@
       "endISO": "2026-08-09",
       "goal": 14000,
       "actual": {
-        "gross_sales": 1143.74,
+        "gross_sales": 1758.74,
         "discounts": 494.92,
         "returns": 0,
-        "net_sales": 648.82,
-        "gross_profit": 120.34,
-        "total_orders": 2,
-        "units": 20,
+        "net_sales": 1263.82,
+        "gross_profit": 735.34,
+        "total_orders": 3,
+        "units": 26,
         "cogs": 528.48,
-        "gross_margin": 0.18547517030917665
+        "gross_margin": 0.581839185960026
       }
     },
     {
@@ -297,6 +297,32 @@
       "cogs": 364.88,
       "gross_profit": 0,
       "gross_margin": 0
+    },
+    {
+      "order_id": "154324",
+      "order_date": "2026-08-04T20:20:31Z",
+      "tags": [
+        "Concierge",
+        "HitsHudson",
+        "NP"
+      ],
+      "tag_has_hits": true,
+      "customer": "Victoria Manzitto",
+      "customer_email": "victiriam221@gmail.com",
+      "payment_status": "PAID",
+      "fulfillment_status": "UNFULFILLED",
+      "location": "No Shopify location returned",
+      "gross_sales": 615,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 615,
+      "shipping_charges": 0,
+      "taxes": 53.82,
+      "total_sales": 668.82,
+      "units": 6,
+      "cogs": 0,
+      "gross_profit": 615,
+      "gross_margin": 1
     },
     {
       "order_id": "154303",
@@ -6355,8 +6381,8 @@
     }
   ],
   "stats": {
-    "scanned": 971,
-    "matched": 266,
+    "scanned": 972,
+    "matched": 267,
     "excluded": 705
   },
   "formulas": {
