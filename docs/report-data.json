@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T19:56:09.354Z",
+  "generated_at": "2026-08-05T21:33:58.973Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -6381,9 +6381,9 @@
     }
   ],
   "stats": {
-    "scanned": 972,
+    "scanned": 973,
     "matched": 267,
-    "excluded": 705
+    "excluded": 706
   },
   "formulas": {
     "budget_net_sales": "Gross Sales Goal × (1 − Discounts & Returns %)",
