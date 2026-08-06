@@ -53,3 +53,8 @@ The editable number inputs now save on change/blur instead of recalculating on e
 - `Marketing / Activations Total Cost` and `Others Total Cost` are one-time project costs.
 - One-time OPEX is deducted once in the first included calculation week, not every week.
 - Gross Profit remains `Net Sales × Gross Margin`; OPEX affects Weekly Contribution and payback, not Gross Profit.
+
+
+## Cumulative view
+
+The dashboard includes a **Cumulative** filter in the main report. It aggregates actual Shopify data from the HITS start date through today and clearly labels every KPI as Weekly, Monthly, or Cumulative. The cumulative view shows Gross Sales, Discounts, Returns, Net Sales, COGS, Gross Profit, Gross Margin, Orders, Units, Shipping, Taxes, and Total Sales.
