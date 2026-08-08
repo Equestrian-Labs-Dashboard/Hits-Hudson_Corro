@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-08T13:13:46.941Z",
+  "generated_at": "2026-08-08T13:59:18.668Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -203,15 +203,15 @@
       "endISO": "2026-08-09",
       "goal": 8000,
       "actual": {
-        "gross_sales": 802.02,
+        "gross_sales": 831.56,
         "discounts": 0,
         "returns": 31.35,
-        "net_sales": 770.67,
-        "gross_profit": 678.24,
-        "total_orders": 3,
-        "units": 12,
-        "cogs": 92.43,
-        "gross_margin": 0.8800653976410138
+        "net_sales": 800.21,
+        "gross_profit": 692.55,
+        "total_orders": 4,
+        "units": 13,
+        "cogs": 107.66,
+        "gross_margin": 0.8654603166668748
       }
     },
     {
@@ -250,6 +250,29 @@
     }
   ],
   "orders": [
+    {
+      "order_id": "154362",
+      "order_date": "2026-08-08T13:58:16Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "Alicia Fiscus",
+      "customer_email": "alicia.fiscus@gmail.com",
+      "payment_status": "AUTHORIZED",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 29.54,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 29.54,
+      "shipping_charges": 0,
+      "taxes": 2.36,
+      "total_sales": 0,
+      "units": 1,
+      "cogs": 15.23,
+      "gross_profit": 14.31,
+      "gross_margin": 0.48442789438050105
+    },
     {
       "order_id": "154351",
       "order_date": "2026-08-07T18:10:59Z",
@@ -6621,15 +6644,15 @@
     }
   ],
   "stats": {
-    "scanned": 1001,
-    "matched": 266,
+    "scanned": 1002,
+    "matched": 267,
     "excluded": 735,
     "excluded_missing_tag": 735,
     "excluded_wrong_location": 732,
     "excluded_non_hits_tag": 24,
     "matched_location_and_tag": 63,
     "matched_tag_only": 6,
-    "matched_location_only": 197
+    "matched_location_only": 198
   },
   "formulas": {
     "budget_net_sales": "Gross Sales Goal × (1 − Discounts & Returns %)",
