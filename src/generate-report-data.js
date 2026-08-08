@@ -145,9 +145,20 @@ function deliveryInfo(order) {
 }
 
 function qualifies(order) {
-  const tag = (order.tags || []).some((t) => String(t).toLowerCase() === CONFIG.orderTag.toLowerCase());
+  const tags = (order.tags || []).map((t) => String(t).trim());
+  const lowerTags = tags.map((t) => t.toLowerCase());
+  const tag = lowerTags.some((t) => t === CONFIG.orderTag.toLowerCase());
   const delivery = deliveryInfo(order);
-  return { include: tag && delivery.match, tag, delivery }; // Strict HITS rule: warehouse/location AND HitsHudson order tag
+
+  // Preserve the original HITS inclusion logic (location OR HitsHudson), but
+  // explicitly remove the false positives Ceci identified: Concierge/Employee
+  // orders that happen to pass through Corro Trailer 1 without HitsHudson.
+  const clearlyNonHits = !tag && lowerTags.some((t) =>
+    t === 'employee' || t.includes('concierge')
+  );
+  const include = !clearlyNonHits && (tag || delivery.match);
+
+  return { include, tag, delivery, clearlyNonHits };
 }
 
 function orderSummary(order) {
@@ -178,7 +189,7 @@ function orderSummary(order) {
 }
 
 function buildReport(goals, rawOrders) {
-  const stats = { scanned: rawOrders.length, matched: 0, excluded: 0, excluded_missing_tag: 0, excluded_wrong_location: 0, matched_location_and_tag: 0 };
+  const stats = { scanned: rawOrders.length, matched: 0, excluded: 0, excluded_missing_tag: 0, excluded_wrong_location: 0, excluded_non_hits_tag: 0, matched_location_and_tag: 0, matched_tag_only: 0, matched_location_only: 0 };
   const summaries = [];
   for (const order of rawOrders) {
     const qualification = qualifies(order);
@@ -186,9 +197,14 @@ function buildReport(goals, rawOrders) {
       stats.excluded++;
       if (!qualification.tag) stats.excluded_missing_tag++;
       if (!qualification.delivery.match) stats.excluded_wrong_location++;
+      if (qualification.clearlyNonHits) stats.excluded_non_hits_tag++;
       continue;
     }
-    summaries.push(orderSummary(order)); stats.matched++; stats.matched_location_and_tag++;
+    summaries.push(orderSummary(order));
+    stats.matched++;
+    if (qualification.tag && qualification.delivery.match) stats.matched_location_and_tag++;
+    else if (qualification.tag) stats.matched_tag_only++;
+    else if (qualification.delivery.match) stats.matched_location_only++;
   }
 
   const weeks = goals.map((g) => ({ ...g, actual: { gross_sales: 0, discounts: 0, returns: 0, net_sales: 0, gross_profit: 0, total_orders: 0, units: 0, cogs: 0 } }));
@@ -207,7 +223,7 @@ function buildReport(goals, rawOrders) {
 
   return {
     generated_at: new Date().toISOString(),
-    config: { location_id: CONFIG.locationId, location_name: CONFIG.locationName, order_tag: CONFIG.orderTag, api_version: CONFIG.apiVersion, inclusion_rule: 'Corro Trailer 1 warehouse/location AND HitsHudson order tag' },
+    config: { location_id: CONFIG.locationId, location_name: CONFIG.locationName, order_tag: CONFIG.orderTag, api_version: CONFIG.apiVersion, inclusion_rule: 'Corro Trailer 1 warehouse/location OR HitsHudson order tag; exclude Concierge/Employee orders without HitsHudson' },
     assumptions: { ...MODEL }, weeks, orders: summaries, stats,
     formulas: {
       budget_net_sales: 'Gross Sales Goal × (1 − Discounts & Returns %)',
@@ -216,6 +232,7 @@ function buildReport(goals, rawOrders) {
       one_time_opex: 'Marketing / Activations Total Cost + Others Total Cost; deducted once in the first included week',
       budget_weekly_contribution: 'Budget Gross Profit + Marketing Income Budget − Weekly OPEX',
       actual_weekly_contribution: 'Shopify Actual Gross Profit + Manual Marketing Actual − Manual Weekly OPEX Actual; one-time OPEX is deducted once',
+      cumulative_profit_after_opex: 'Cumulative Shopify Actual Gross Profit − weekly recurring OPEX for elapsed included weeks − one-time OPEX once',
       actual_forecast_cumulative_cash: '−CAPEX + actual contributions for started weeks + budget contributions for future weeks − one-time OPEX once',
       actual_only_cumulative_cash: '−CAPEX + actual contributions for started weeks only',
       payback: 'First included week where cumulative cash is greater than or equal to zero'
