@@ -58,3 +58,10 @@ The editable number inputs now save on change/blur instead of recalculating on e
 ## Cumulative view
 
 The dashboard includes a **Cumulative** filter in the main report. It aggregates actual Shopify data from the HITS start date through today and clearly labels every KPI as Weekly, Monthly, or Cumulative. The cumulative view shows Gross Sales, Discounts, Returns, Net Sales, COGS, Gross Profit, Gross Margin, Orders, Units, Shipping, Taxes, and Total Sales.
+
+
+## HITS rules updated 2026-08-06
+- Weekly Gross Sales Goal: **$8,000** for each configured HITS week.
+- Order inclusion is strict: the order must be assigned to **Corro Trailer 1** AND have the Shopify order tag **HitsHudson**. This removes Concierge/Employee orders that happen to use the same warehouse but are not HITS sales.
+- In **By Month**, the Taxes KPI card is replaced by **Monthly Total Commissions = 5% of Net Sales**. Order-level tax data remains available in the detailed order table for audit.
+- Shipping Charges remain Shopify actuals. With the strict HITS filter, non-HITS orders (such as an order with shipping but without HitsHudson) are excluded rather than artificially forcing shipping to zero.

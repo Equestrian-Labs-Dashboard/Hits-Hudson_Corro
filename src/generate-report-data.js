@@ -147,7 +147,7 @@ function deliveryInfo(order) {
 function qualifies(order) {
   const tag = (order.tags || []).some((t) => String(t).toLowerCase() === CONFIG.orderTag.toLowerCase());
   const delivery = deliveryInfo(order);
-  return { include: tag || delivery.match, tag, delivery };
+  return { include: tag && delivery.match, tag, delivery }; // Strict HITS rule: warehouse/location AND HitsHudson order tag
 }
 
 function orderSummary(order) {
@@ -169,7 +169,7 @@ function orderSummary(order) {
     customer: `${order.customer?.firstName || ''} ${order.customer?.lastName || ''}`.trim() || 'N/A',
     customer_email: order.customer?.email || order.email || '',
     payment_status: order.displayFinancialStatus || 'UNKNOWN', fulfillment_status: order.displayFulfillmentStatus || 'UNKNOWN',
-    location: info.delivery.name, gross_sales: grossSales, discounts: round2(discounts), returns: round2(refunds),
+    location: info.delivery.name, location_matches_hits: info.delivery.match, gross_sales: grossSales, discounts: round2(discounts), returns: round2(refunds),
     net_sales: round2(netSales), shipping_charges: money(order.totalShippingPriceSet), taxes: money(order.totalTaxSet),
     total_sales: money(order.netPaymentSet, netSales + money(order.totalShippingPriceSet) + money(order.totalTaxSet)),
     units: lineRows.reduce((s, i) => s + Number(i.quantity || 0), 0), cogs, gross_profit: grossProfit,
@@ -178,11 +178,17 @@ function orderSummary(order) {
 }
 
 function buildReport(goals, rawOrders) {
-  const stats = { scanned: rawOrders.length, matched: 0, excluded: 0 };
+  const stats = { scanned: rawOrders.length, matched: 0, excluded: 0, excluded_missing_tag: 0, excluded_wrong_location: 0, matched_location_and_tag: 0 };
   const summaries = [];
   for (const order of rawOrders) {
-    if (!qualifies(order).include) { stats.excluded++; continue; }
-    summaries.push(orderSummary(order)); stats.matched++;
+    const qualification = qualifies(order);
+    if (!qualification.include) {
+      stats.excluded++;
+      if (!qualification.tag) stats.excluded_missing_tag++;
+      if (!qualification.delivery.match) stats.excluded_wrong_location++;
+      continue;
+    }
+    summaries.push(orderSummary(order)); stats.matched++; stats.matched_location_and_tag++;
   }
 
   const weeks = goals.map((g) => ({ ...g, actual: { gross_sales: 0, discounts: 0, returns: 0, net_sales: 0, gross_profit: 0, total_orders: 0, units: 0, cogs: 0 } }));
@@ -201,7 +207,7 @@ function buildReport(goals, rawOrders) {
 
   return {
     generated_at: new Date().toISOString(),
-    config: { location_id: CONFIG.locationId, location_name: CONFIG.locationName, order_tag: CONFIG.orderTag, api_version: CONFIG.apiVersion },
+    config: { location_id: CONFIG.locationId, location_name: CONFIG.locationName, order_tag: CONFIG.orderTag, api_version: CONFIG.apiVersion, inclusion_rule: 'Corro Trailer 1 warehouse/location AND HitsHudson order tag' },
     assumptions: { ...MODEL }, weeks, orders: summaries, stats,
     formulas: {
       budget_net_sales: 'Gross Sales Goal × (1 − Discounts & Returns %)',
