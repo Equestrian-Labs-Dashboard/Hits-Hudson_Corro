@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-13T18:10:35.836Z",
+  "generated_at": "2026-08-13T19:26:50.918Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -6877,11 +6877,11 @@
     }
   ],
   "stats": {
-    "scanned": 1040,
+    "scanned": 1041,
     "matched": 277,
-    "excluded": 763,
-    "excluded_missing_tag": 763,
-    "excluded_wrong_location": 760,
+    "excluded": 764,
+    "excluded_missing_tag": 764,
+    "excluded_wrong_location": 761,
     "excluded_non_hits_tag": 25,
     "matched_location_and_tag": 63,
     "matched_tag_only": 6,
