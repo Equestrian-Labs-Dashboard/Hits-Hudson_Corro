@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T18:58:44.631Z",
+  "generated_at": "2026-08-17T19:43:50.366Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -220,15 +220,15 @@
       "endISO": "2026-08-16",
       "goal": 8000,
       "actual": {
-        "gross_sales": 0,
+        "gross_sales": 236.31,
         "discounts": 0,
         "returns": 0,
-        "net_sales": 0,
-        "gross_profit": 0,
-        "total_orders": 0,
-        "units": 0,
-        "cogs": 0,
-        "gross_margin": 0
+        "net_sales": 236.31,
+        "gross_profit": 69.28,
+        "total_orders": 1,
+        "units": 20,
+        "cogs": 167.03,
+        "gross_margin": 0.29317422030383816
       }
     },
     {
@@ -275,6 +275,33 @@
       "cogs": 250,
       "gross_profit": 330,
       "gross_margin": 0.5689655172413793
+    },
+    {
+      "order_id": "154412",
+      "order_date": "2026-08-15T18:33:36Z",
+      "tags": [
+        "Concierge",
+        "HitsHudson",
+        "NP"
+      ],
+      "tag_has_hits": true,
+      "customer": "Gia Rinaldi",
+      "customer_email": "giavannafrinaldi@yahoo.com",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "New Wellington Warehouse",
+      "location_matches_hits": false,
+      "gross_sales": 236.31,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 236.31,
+      "shipping_charges": 0,
+      "taxes": 19.8,
+      "total_sales": 256.11,
+      "units": 20,
+      "cogs": 167.03,
+      "gross_profit": 69.28,
+      "gross_margin": 0.29317422030383816
     },
     {
       "order_id": "154374",
@@ -6904,13 +6931,13 @@
   ],
   "stats": {
     "scanned": 1060,
-    "matched": 278,
-    "excluded": 782,
-    "excluded_missing_tag": 782,
-    "excluded_wrong_location": 779,
+    "matched": 279,
+    "excluded": 781,
+    "excluded_missing_tag": 781,
+    "excluded_wrong_location": 778,
     "excluded_non_hits_tag": 27,
     "matched_location_and_tag": 63,
-    "matched_tag_only": 7,
+    "matched_tag_only": 8,
     "matched_location_only": 208
   },
   "formulas": {
