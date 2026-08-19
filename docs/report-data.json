@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19T20:46:45.224Z",
+  "generated_at": "2026-08-19T21:42:42.910Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -237,65 +237,19 @@
       "endISO": "2026-08-23",
       "goal": 8000,
       "actual": {
-        "gross_sales": 1327.54,
-        "discounts": 112.12,
+        "gross_sales": 580,
+        "discounts": 0,
         "returns": 0,
-        "net_sales": 1215.42,
-        "gross_profit": 495.92,
-        "total_orders": 3,
-        "units": 5,
-        "cogs": 719.5,
-        "gross_margin": 0.40802356387092525
+        "net_sales": 580,
+        "gross_profit": 330,
+        "total_orders": 1,
+        "units": 1,
+        "cogs": 250,
+        "gross_margin": 0.5689655172413793
       }
     }
   ],
   "orders": [
-    {
-      "order_id": "154430",
-      "order_date": "2026-08-19T17:43:35Z",
-      "tags": [],
-      "tag_has_hits": false,
-      "customer": "Swede Ventures c/o Maddie Flocks",
-      "customer_email": "maddie.swedeventures@gmail.com",
-      "payment_status": "PAID",
-      "fulfillment_status": "FULFILLED",
-      "location": "Corro Trailer 1, Corro Trailer 1",
-      "location_matches_hits": true,
-      "gross_sales": 537.55,
-      "discounts": 80.63,
-      "returns": 0,
-      "net_sales": 456.92,
-      "shipping_charges": 0,
-      "taxes": 36.54,
-      "total_sales": 493.46,
-      "units": 3,
-      "cogs": 380.5,
-      "gross_profit": 76.42,
-      "gross_margin": 0.16725028451370041
-    },
-    {
-      "order_id": "154428",
-      "order_date": "2026-08-18T22:51:25Z",
-      "tags": [],
-      "tag_has_hits": false,
-      "customer": "Stella Buckingham",
-      "customer_email": "ladystellab@icloud.com",
-      "payment_status": "PAID",
-      "fulfillment_status": "FULFILLED",
-      "location": "Corro Trailer 1, Corro Trailer 1",
-      "location_matches_hits": true,
-      "gross_sales": 209.99,
-      "discounts": 31.49,
-      "returns": 0,
-      "net_sales": 178.5,
-      "shipping_charges": 0,
-      "taxes": 14.28,
-      "total_sales": 192.78,
-      "units": 1,
-      "cogs": 89,
-      "gross_profit": 89.5,
-      "gross_margin": 0.5014005602240896
-    },
     {
       "order_id": "154420",
       "order_date": "2026-08-17T15:42:46Z",
@@ -326,6 +280,7 @@
       "order_id": "154412",
       "order_date": "2026-08-15T18:33:36Z",
       "tags": [
+        "commissioneligible",
         "Concierge",
         "HitsHudson",
         "NP"
@@ -6977,14 +6932,14 @@
   ],
   "stats": {
     "scanned": 1071,
-    "matched": 281,
-    "excluded": 790,
-    "excluded_missing_tag": 790,
+    "matched": 279,
+    "excluded": 792,
+    "excluded_missing_tag": 792,
     "excluded_wrong_location": 787,
-    "excluded_non_hits_tag": 29,
+    "excluded_non_hits_tag": 31,
     "matched_location_and_tag": 63,
     "matched_tag_only": 8,
-    "matched_location_only": 210
+    "matched_location_only": 208
   },
   "formulas": {
     "budget_net_sales": "Gross Sales Goal × (1 − Discounts & Returns %)",
