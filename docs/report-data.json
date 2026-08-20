@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T11:44:16.826Z",
+  "generated_at": "2026-08-20T13:12:13.200Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -622,8 +622,8 @@
       "customer": "Victoria Manzitto",
       "customer_email": "victiriam221@gmail.com",
       "payment_status": "PAID",
-      "fulfillment_status": "UNFULFILLED",
-      "location": "No Shopify location returned",
+      "fulfillment_status": "FULFILLED",
+      "location": "New Wellington Warehouse",
       "location_matches_hits": false,
       "gross_sales": 615,
       "discounts": 0,
