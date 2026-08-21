@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T14:54:53.658Z",
+  "generated_at": "2026-08-21T15:49:53.971Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -261,9 +261,9 @@
       "customer": "Taylor Pruitt",
       "customer_email": "taylorbandit123@gmail.com",
       "payment_status": "PAID",
-      "fulfillment_status": "UNFULFILLED",
-      "location": "No Shopify location returned",
-      "location_matches_hits": false,
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1",
+      "location_matches_hits": true,
       "gross_sales": 580,
       "discounts": 0,
       "returns": 0,
@@ -6937,8 +6937,8 @@
     "excluded_missing_tag": 798,
     "excluded_wrong_location": 792,
     "excluded_non_hits_tag": 32,
-    "matched_location_and_tag": 63,
-    "matched_tag_only": 8,
+    "matched_location_and_tag": 64,
+    "matched_tag_only": 7,
     "matched_location_only": 208
   },
   "formulas": {
