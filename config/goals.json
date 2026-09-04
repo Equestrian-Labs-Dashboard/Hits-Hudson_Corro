@@ -72,6 +72,76 @@
       "startISO": "2026-08-17",
       "endISO": "2026-08-23",
       "goal": 8000
+    },
+    {
+      "week": 13,
+      "startISO": "2026-08-24",
+      "endISO": "2026-08-30",
+      "goal": 0,
+      "include_in_calculation": false
+    },
+    {
+      "week": 14,
+      "startISO": "2026-08-31",
+      "endISO": "2026-09-06",
+      "goal": 0,
+      "include_in_calculation": false
+    },
+    {
+      "week": 15,
+      "startISO": "2026-09-07",
+      "endISO": "2026-09-13",
+      "goal": 0,
+      "include_in_calculation": false
+    },
+    {
+      "week": 16,
+      "startISO": "2026-09-14",
+      "endISO": "2026-09-20",
+      "goal": 0,
+      "include_in_calculation": false
+    },
+    {
+      "week": 17,
+      "startISO": "2026-09-21",
+      "endISO": "2026-09-27",
+      "goal": 0,
+      "include_in_calculation": false
+    },
+    {
+      "week": 18,
+      "startISO": "2026-09-28",
+      "endISO": "2026-10-04",
+      "goal": 0,
+      "include_in_calculation": false
+    },
+    {
+      "week": 19,
+      "startISO": "2026-10-05",
+      "endISO": "2026-10-11",
+      "goal": 0,
+      "include_in_calculation": false
+    },
+    {
+      "week": 20,
+      "startISO": "2026-10-12",
+      "endISO": "2026-10-18",
+      "goal": 0,
+      "include_in_calculation": false
+    },
+    {
+      "week": 21,
+      "startISO": "2026-10-19",
+      "endISO": "2026-10-25",
+      "goal": 0,
+      "include_in_calculation": false
+    },
+    {
+      "week": 22,
+      "startISO": "2026-10-26",
+      "endISO": "2026-11-01",
+      "goal": 0,
+      "include_in_calculation": false
     }
   ]
 }

@@ -86,7 +86,8 @@ async function loadGoals() {
     week: Number(w.week),
     startISO: String(w.startISO || ''),
     endISO: String(w.endISO || ''),
-    goal: round2(w.goal)
+    goal: round2(w.goal),
+    ...(w.include_in_calculation !== undefined ? { include_in_calculation: w.include_in_calculation } : {})
   })).filter((w) => w.week && /^\d{4}-\d{2}-\d{2}$/.test(w.startISO) && /^\d{4}-\d{2}-\d{2}$/.test(w.endISO))
     .sort((a, b) => a.week - b.week)
     .slice(0, CONFIG.projectWeeks);
