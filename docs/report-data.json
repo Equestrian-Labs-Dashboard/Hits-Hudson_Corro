@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-04T19:37:16.715Z",
+  "generated_at": "2026-09-04T22:22:10.476Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -437,7 +437,7 @@
       "tag_has_hits": false,
       "customer": "N/A",
       "customer_email": "",
-      "payment_status": "AUTHORIZED",
+      "payment_status": "PAID",
       "fulfillment_status": "FULFILLED",
       "location": "Corro Trailer 1, Corro Trailer 1",
       "location_matches_hits": true,
@@ -447,7 +447,7 @@
       "net_sales": 11.54,
       "shipping_charges": 0,
       "taxes": 0.92,
-      "total_sales": 0,
+      "total_sales": 12.46,
       "units": 1,
       "cogs": 7.53,
       "gross_profit": 4.01,
@@ -8135,11 +8135,11 @@
     }
   ],
   "stats": {
-    "scanned": 1190,
+    "scanned": 1193,
     "matched": 321,
-    "excluded": 869,
-    "excluded_missing_tag": 869,
-    "excluded_wrong_location": 861,
+    "excluded": 872,
+    "excluded_missing_tag": 872,
+    "excluded_wrong_location": 864,
     "excluded_non_hits_tag": 37,
     "matched_location_and_tag": 74,
     "matched_tag_only": 10,
