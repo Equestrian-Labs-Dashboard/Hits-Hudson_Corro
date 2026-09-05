@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-05T10:37:52.472Z",
+  "generated_at": "2026-09-05T13:52:22.880Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -273,15 +273,15 @@
       "goal": 0,
       "include_in_calculation": false,
       "actual": {
-        "gross_sales": 1912.57,
-        "discounts": 85.57,
+        "gross_sales": 1937.71,
+        "discounts": 87.03,
         "returns": 0,
-        "net_sales": 1827,
-        "gross_profit": 1102.15,
-        "total_orders": 20,
-        "units": 38,
-        "cogs": 724.85,
-        "gross_margin": 0.6032567049808429
+        "net_sales": 1850.68,
+        "gross_profit": 1113.2,
+        "total_orders": 22,
+        "units": 40,
+        "cogs": 737.48,
+        "gross_margin": 0.6015086346640154
       }
     },
     {
@@ -430,6 +430,52 @@
     }
   ],
   "orders": [
+    {
+      "order_id": "154557",
+      "order_date": "2026-09-05T13:28:26Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "N/A",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 10.49,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 10.49,
+      "shipping_charges": 0,
+      "taxes": 0.84,
+      "total_sales": 11.33,
+      "units": 1,
+      "cogs": 5.96,
+      "gross_profit": 4.53,
+      "gross_margin": 0.43183984747378457
+    },
+    {
+      "order_id": "154556",
+      "order_date": "2026-09-05T13:27:55Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "N/A",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 14.65,
+      "discounts": 1.46,
+      "returns": 0,
+      "net_sales": 13.19,
+      "shipping_charges": 0,
+      "taxes": 1.06,
+      "total_sales": 14.25,
+      "units": 1,
+      "cogs": 6.67,
+      "gross_profit": 6.52,
+      "gross_margin": 0.4943138741470811
+    },
     {
       "order_id": "154550",
       "order_date": "2026-09-04T19:22:16Z",
@@ -8135,15 +8181,15 @@
     }
   ],
   "stats": {
-    "scanned": 1194,
-    "matched": 321,
-    "excluded": 873,
-    "excluded_missing_tag": 873,
-    "excluded_wrong_location": 865,
+    "scanned": 1197,
+    "matched": 323,
+    "excluded": 874,
+    "excluded_missing_tag": 874,
+    "excluded_wrong_location": 866,
     "excluded_non_hits_tag": 37,
     "matched_location_and_tag": 74,
     "matched_tag_only": 10,
-    "matched_location_only": 237
+    "matched_location_only": 239
   },
   "formulas": {
     "budget_net_sales": "Gross Sales Goal × (1 − Discounts & Returns %)",
