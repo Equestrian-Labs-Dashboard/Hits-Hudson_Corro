@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T14:12:30.248Z",
+  "generated_at": "2026-09-06T17:05:05.842Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -273,15 +273,15 @@
       "goal": 0,
       "include_in_calculation": false,
       "actual": {
-        "gross_sales": 2262.71,
-        "discounts": 87.03,
+        "gross_sales": 3472.81,
+        "discounts": 146.32,
         "returns": 0,
-        "net_sales": 2175.68,
-        "gross_profit": 1288.48,
-        "total_orders": 26,
-        "units": 47,
-        "cogs": 887.2,
-        "gross_margin": 0.5922194440358877
+        "net_sales": 3326.49,
+        "gross_profit": 1850.19,
+        "total_orders": 33,
+        "units": 64,
+        "cogs": 1476.3,
+        "gross_margin": 0.5561988762930297
       }
     },
     {
@@ -431,13 +431,185 @@
   ],
   "orders": [
     {
+      "order_id": "154576",
+      "order_date": "2026-09-06T17:01:46Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "N/A",
+      "customer_email": "chefgracelee@gmail.com",
+      "payment_status": "AUTHORIZED",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 556.49,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 556.49,
+      "shipping_charges": 0,
+      "taxes": 44.54,
+      "total_sales": 0,
+      "units": 4,
+      "cogs": 248.25,
+      "gross_profit": 308.24,
+      "gross_margin": 0.5539003396287444
+    },
+    {
+      "order_id": "154575",
+      "order_date": "2026-09-06T16:58:19Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "N/A",
+      "customer_email": "jillmeschino@gmail.com",
+      "payment_status": "AUTHORIZED",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 245.64,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 245.64,
+      "shipping_charges": 0,
+      "taxes": 19.66,
+      "total_sales": 0,
+      "units": 5,
+      "cogs": 113.21,
+      "gross_profit": 132.43,
+      "gross_margin": 0.5391222927861913
+    },
+    {
+      "order_id": "154574",
+      "order_date": "2026-09-06T16:15:44Z",
+      "tags": [
+        "HitsHudson"
+      ],
+      "tag_has_hits": true,
+      "customer": "Christina Hutchinson",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 104.95,
+      "discounts": 50,
+      "returns": 0,
+      "net_sales": 54.95,
+      "shipping_charges": 0,
+      "taxes": 4.4,
+      "total_sales": 59.35,
+      "units": 1,
+      "cogs": 52.02,
+      "gross_profit": 2.93,
+      "gross_margin": 0.05332120109190173
+    },
+    {
+      "order_id": "154573",
+      "order_date": "2026-09-06T16:08:24Z",
+      "tags": [
+        "HitsHudson"
+      ],
+      "tag_has_hits": true,
+      "customer": "N/A",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 22.05,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 22.05,
+      "shipping_charges": 0,
+      "taxes": 1.76,
+      "total_sales": 23.81,
+      "units": 1,
+      "cogs": 7.35,
+      "gross_profit": 14.7,
+      "gross_margin": 0.6666666666666666
+    },
+    {
+      "order_id": "154572",
+      "order_date": "2026-09-06T16:03:07Z",
+      "tags": [
+        "HitsHudson"
+      ],
+      "tag_has_hits": true,
+      "customer": "Taylor Pruitt",
+      "customer_email": "taylorbandit123@gmail.com",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 185.87,
+      "discounts": 9.29,
+      "returns": 0,
+      "net_sales": 176.58,
+      "shipping_charges": 0,
+      "taxes": 0,
+      "total_sales": 176.58,
+      "units": 1,
+      "cogs": 108.77,
+      "gross_profit": 67.81,
+      "gross_margin": 0.3840185751500736
+    },
+    {
+      "order_id": "154571",
+      "order_date": "2026-09-06T15:41:55Z",
+      "tags": [
+        "HitsHudson"
+      ],
+      "tag_has_hits": true,
+      "customer": "N/A",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 20.99,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 20.99,
+      "shipping_charges": 0,
+      "taxes": 1.68,
+      "total_sales": 22.67,
+      "units": 1,
+      "cogs": 13.45,
+      "gross_profit": 7.54,
+      "gross_margin": 0.3592186755597904
+    },
+    {
+      "order_id": "154570",
+      "order_date": "2026-09-06T14:29:08Z",
+      "tags": [
+        "HitsHudson"
+      ],
+      "tag_has_hits": true,
+      "customer": "Chelsea Kingsbury",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 74.11,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 74.11,
+      "shipping_charges": 0,
+      "taxes": 5.92,
+      "total_sales": 80.03,
+      "units": 4,
+      "cogs": 46.05,
+      "gross_profit": 28.06,
+      "gross_margin": 0.378626366212387
+    },
+    {
       "order_id": "154569",
       "order_date": "2026-09-06T13:52:45Z",
       "tags": [
+        "HitsHudson",
         "kentucky",
         "kentucky_order_failure"
       ],
-      "tag_has_hits": false,
+      "tag_has_hits": true,
       "customer": "N/A",
       "customer_email": "",
       "payment_status": "PAID",
@@ -459,8 +631,13 @@
     {
       "order_id": "154568",
       "order_date": "2026-09-06T13:44:25Z",
-      "tags": [],
-      "tag_has_hits": false,
+      "tags": [
+        "commissioneligible",
+        "Concierge",
+        "HitsHudson",
+        "NP"
+      ],
+      "tag_has_hits": true,
       "customer": "Sarah Redman",
       "customer_email": "twinbayllc@outlook.com",
       "payment_status": "PAID",
@@ -482,8 +659,10 @@
     {
       "order_id": "154562",
       "order_date": "2026-09-05T18:04:11Z",
-      "tags": [],
-      "tag_has_hits": false,
+      "tags": [
+        "HitsHudson"
+      ],
+      "tag_has_hits": true,
       "customer": "N/A",
       "customer_email": "",
       "payment_status": "PAID",
@@ -505,8 +684,10 @@
     {
       "order_id": "154560",
       "order_date": "2026-09-05T15:13:50Z",
-      "tags": [],
-      "tag_has_hits": false,
+      "tags": [
+        "HitsHudson"
+      ],
+      "tag_has_hits": true,
       "customer": "N/A",
       "customer_email": "",
       "payment_status": "PAID",
@@ -528,8 +709,10 @@
     {
       "order_id": "154557",
       "order_date": "2026-09-05T13:28:26Z",
-      "tags": [],
-      "tag_has_hits": false,
+      "tags": [
+        "HitsHudson"
+      ],
+      "tag_has_hits": true,
       "customer": "N/A",
       "customer_email": "",
       "payment_status": "PAID",
@@ -551,8 +734,10 @@
     {
       "order_id": "154556",
       "order_date": "2026-09-05T13:27:55Z",
-      "tags": [],
-      "tag_has_hits": false,
+      "tags": [
+        "HitsHudson"
+      ],
+      "tag_has_hits": true,
       "customer": "N/A",
       "customer_email": "",
       "payment_status": "PAID",
@@ -851,7 +1036,9 @@
       "order_id": "154528",
       "order_date": "2026-09-03T17:44:01Z",
       "tags": [
+        "commissioneligible",
         "Concierge",
+        "EducatedGuess",
         "HitsHudson",
         "NP"
       ],
@@ -906,7 +1093,7 @@
       "order_date": "2026-09-03T16:16:06Z",
       "tags": [],
       "tag_has_hits": false,
-      "customer": "Jaime A",
+      "customer": "Jaime Auletto",
       "customer_email": "",
       "payment_status": "PAID",
       "fulfillment_status": "FULFILLED",
@@ -5489,7 +5676,7 @@
       "order_date": "2026-07-17T20:21:06Z",
       "tags": [],
       "tag_has_hits": false,
-      "customer": "N/A",
+      "customer": "Jaime Auletto",
       "customer_email": "",
       "payment_status": "PAID",
       "fulfillment_status": "FULFILLED",
@@ -6093,8 +6280,11 @@
     {
       "order_id": "153990",
       "order_date": "2026-07-16T19:01:13Z",
-      "tags": [],
-      "tag_has_hits": false,
+      "tags": [
+        "commissioneligible",
+        "HitsHudson"
+      ],
+      "tag_has_hits": true,
       "customer": "Maciek Pestka",
       "customer_email": "maciekpestka@icloud.com",
       "payment_status": "PAID",
@@ -8276,15 +8466,15 @@
     }
   ],
   "stats": {
-    "scanned": 1209,
-    "matched": 327,
+    "scanned": 1216,
+    "matched": 334,
     "excluded": 882,
     "excluded_missing_tag": 882,
     "excluded_wrong_location": 874,
     "excluded_non_hits_tag": 38,
-    "matched_location_and_tag": 74,
+    "matched_location_and_tag": 86,
     "matched_tag_only": 10,
-    "matched_location_only": 243
+    "matched_location_only": 238
   },
   "formulas": {
     "budget_net_sales": "Gross Sales Goal × (1 − Discounts & Returns %)",
