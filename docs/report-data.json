@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T11:00:00.221Z",
+  "generated_at": "2026-09-06T14:12:30.248Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -273,15 +273,15 @@
       "goal": 0,
       "include_in_calculation": false,
       "actual": {
-        "gross_sales": 2063.64,
+        "gross_sales": 2262.71,
         "discounts": 87.03,
         "returns": 0,
-        "net_sales": 1976.61,
-        "gross_profit": 1164.32,
-        "total_orders": 24,
-        "units": 44,
-        "cogs": 812.29,
-        "gross_margin": 0.5890489272036467
+        "net_sales": 2175.68,
+        "gross_profit": 1288.48,
+        "total_orders": 26,
+        "units": 47,
+        "cogs": 887.2,
+        "gross_margin": 0.5922194440358877
       }
     },
     {
@@ -430,6 +430,55 @@
     }
   ],
   "orders": [
+    {
+      "order_id": "154569",
+      "order_date": "2026-09-06T13:52:45Z",
+      "tags": [
+        "kentucky",
+        "kentucky_order_failure"
+      ],
+      "tag_has_hits": false,
+      "customer": "N/A",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 167.99,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 167.99,
+      "shipping_charges": 0,
+      "taxes": 0,
+      "total_sales": 167.99,
+      "units": 1,
+      "cogs": 56.51,
+      "gross_profit": 111.48,
+      "gross_margin": 0.6636109292219775
+    },
+    {
+      "order_id": "154568",
+      "order_date": "2026-09-06T13:44:25Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "Sarah Redman",
+      "customer_email": "twinbayllc@outlook.com",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 31.08,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 31.08,
+      "shipping_charges": 0,
+      "taxes": 2.48,
+      "total_sales": 33.56,
+      "units": 2,
+      "cogs": 18.4,
+      "gross_profit": 12.68,
+      "gross_margin": 0.407979407979408
+    },
     {
       "order_id": "154562",
       "order_date": "2026-09-05T18:04:11Z",
@@ -8227,15 +8276,15 @@
     }
   ],
   "stats": {
-    "scanned": 1205,
-    "matched": 325,
-    "excluded": 880,
-    "excluded_missing_tag": 880,
-    "excluded_wrong_location": 872,
+    "scanned": 1209,
+    "matched": 327,
+    "excluded": 882,
+    "excluded_missing_tag": 882,
+    "excluded_wrong_location": 874,
     "excluded_non_hits_tag": 38,
     "matched_location_and_tag": 74,
     "matched_tag_only": 10,
-    "matched_location_only": 241
+    "matched_location_only": 243
   },
   "formulas": {
     "budget_net_sales": "Gross Sales Goal × (1 − Discounts & Returns %)",
