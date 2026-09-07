@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T16:29:01.295Z",
+  "generated_at": "2026-09-07T20:35:50.003Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -503,6 +503,7 @@
       "order_id": "154581",
       "order_date": "2026-09-06T18:02:17Z",
       "tags": [
+        "commissioneligible",
         "HitsHudson"
       ],
       "tag_has_hits": true,
@@ -8639,11 +8640,11 @@
     }
   ],
   "stats": {
-    "scanned": 1230,
+    "scanned": 1235,
     "matched": 341,
-    "excluded": 889,
-    "excluded_missing_tag": 889,
-    "excluded_wrong_location": 881,
+    "excluded": 894,
+    "excluded_missing_tag": 894,
+    "excluded_wrong_location": 886,
     "excluded_non_hits_tag": 38,
     "matched_location_and_tag": 92,
     "matched_tag_only": 10,
