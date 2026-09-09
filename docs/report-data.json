@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T18:38:59.275Z",
+  "generated_at": "2026-09-09T21:43:18.730Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -291,15 +291,15 @@
       "goal": 0,
       "include_in_calculation": false,
       "actual": {
-        "gross_sales": 894.15,
+        "gross_sales": 957.14,
         "discounts": 10.27,
         "returns": 0,
-        "net_sales": 883.88,
-        "gross_profit": 241.38,
-        "total_orders": 6,
-        "units": 11,
-        "cogs": 642.5,
-        "gross_margin": 0.273091369869213
+        "net_sales": 946.87,
+        "gross_profit": 270.21,
+        "total_orders": 7,
+        "units": 14,
+        "cogs": 676.66,
+        "gross_margin": 0.28537180394351913
       }
     },
     {
@@ -430,6 +430,29 @@
     }
   ],
   "orders": [
+    {
+      "order_id": "154622",
+      "order_date": "2026-09-09T19:39:42Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "N/A",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 62.99,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 62.99,
+      "shipping_charges": 0,
+      "taxes": 5.04,
+      "total_sales": 68.03,
+      "units": 3,
+      "cogs": 34.16,
+      "gross_profit": 28.83,
+      "gross_margin": 0.4576916970947769
+    },
     {
       "order_id": "154619",
       "order_date": "2026-09-09T16:59:56Z",
@@ -8783,15 +8806,15 @@
     }
   ],
   "stats": {
-    "scanned": 1260,
-    "matched": 347,
-    "excluded": 913,
-    "excluded_missing_tag": 913,
-    "excluded_wrong_location": 905,
+    "scanned": 1263,
+    "matched": 348,
+    "excluded": 915,
+    "excluded_missing_tag": 915,
+    "excluded_wrong_location": 907,
     "excluded_non_hits_tag": 39,
     "matched_location_and_tag": 92,
     "matched_tag_only": 11,
-    "matched_location_only": 244
+    "matched_location_only": 245
   },
   "formulas": {
     "budget_net_sales": "Gross Sales Goal × (1 − Discounts & Returns %)",
