@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T09:48:59.739Z",
+  "generated_at": "2026-09-09T14:38:04.757Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -291,15 +291,15 @@
       "goal": 0,
       "include_in_calculation": false,
       "actual": {
-        "gross_sales": 0,
-        "discounts": 0,
+        "gross_sales": 603.39,
+        "discounts": 0.83,
         "returns": 0,
-        "net_sales": 0,
-        "gross_profit": 0,
-        "total_orders": 0,
-        "units": 0,
-        "cogs": 0,
-        "gross_margin": 0
+        "net_sales": 602.56,
+        "gross_profit": 152.61,
+        "total_orders": 2,
+        "units": 2,
+        "cogs": 449.95,
+        "gross_margin": 0.2532693839617632
       }
     },
     {
@@ -430,6 +430,57 @@
     }
   ],
   "orders": [
+    {
+      "order_id": "154611",
+      "order_date": "2026-09-09T13:50:25Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "N/A",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 8.39,
+      "discounts": 0.83,
+      "returns": 0,
+      "net_sales": 7.56,
+      "shipping_charges": 0,
+      "taxes": 0.6,
+      "total_sales": 8.16,
+      "units": 1,
+      "cogs": 3.7,
+      "gross_profit": 3.86,
+      "gross_margin": 0.5105820105820106
+    },
+    {
+      "order_id": "154610",
+      "order_date": "2026-09-09T13:49:17Z",
+      "tags": [
+        "HitsHudson",
+        "NP",
+        "Shopify Collective",
+        "XLR8 Equine"
+      ],
+      "tag_has_hits": true,
+      "customer": "Samantha Candiloro",
+      "customer_email": "samantha_candiloro@aol.com",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "New Wellington Warehouse, XLR8 Equine via Shopify Collective",
+      "location_matches_hits": false,
+      "gross_sales": 595,
+      "discounts": 0,
+      "returns": 0,
+      "net_sales": 595,
+      "shipping_charges": 12.75,
+      "taxes": 48.62,
+      "total_sales": 656.37,
+      "units": 1,
+      "cogs": 446.25,
+      "gross_profit": 148.75,
+      "gross_margin": 0.25
+    },
     {
       "order_id": "154584",
       "order_date": "2026-09-06T19:25:54Z",
@@ -8640,15 +8691,15 @@
     }
   ],
   "stats": {
-    "scanned": 1249,
-    "matched": 341,
+    "scanned": 1251,
+    "matched": 343,
     "excluded": 908,
     "excluded_missing_tag": 908,
     "excluded_wrong_location": 900,
     "excluded_non_hits_tag": 38,
     "matched_location_and_tag": 92,
-    "matched_tag_only": 10,
-    "matched_location_only": 239
+    "matched_tag_only": 11,
+    "matched_location_only": 240
   },
   "formulas": {
     "budget_net_sales": "Gross Sales Goal × (1 − Discounts & Returns %)",
