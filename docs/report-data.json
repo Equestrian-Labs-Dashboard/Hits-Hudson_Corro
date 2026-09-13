@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T16:20:04.649Z",
+  "generated_at": "2026-09-13T19:28:52.597Z",
   "config": {
     "location_id": "67063775290",
     "location_name": "Corro Trailer 1",
@@ -291,15 +291,15 @@
       "goal": 0,
       "include_in_calculation": false,
       "actual": {
-        "gross_sales": 6015.42,
-        "discounts": 237.6,
+        "gross_sales": 6189.09,
+        "discounts": 261.38,
         "returns": 987.12,
-        "net_sales": 4790.7,
-        "gross_profit": 1807.58,
-        "total_orders": 37,
-        "units": 97,
-        "cogs": 2983.12,
-        "gross_margin": 0.37731020518922076
+        "net_sales": 4940.59,
+        "gross_profit": 1849.95,
+        "total_orders": 40,
+        "units": 101,
+        "cogs": 3090.64,
+        "gross_margin": 0.3744390852104708
       }
     },
     {
@@ -430,6 +430,52 @@
     }
   ],
   "orders": [
+    {
+      "order_id": "154680",
+      "order_date": "2026-09-13T18:48:38Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "N/A",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 24.14,
+      "discounts": 2.41,
+      "returns": 0,
+      "net_sales": 21.73,
+      "shipping_charges": 0,
+      "taxes": 1.74,
+      "total_sales": 23.47,
+      "units": 1,
+      "cogs": 15.48,
+      "gross_profit": 6.25,
+      "gross_margin": 0.28762080073630925
+    },
+    {
+      "order_id": "154679",
+      "order_date": "2026-09-13T18:05:16Z",
+      "tags": [],
+      "tag_has_hits": false,
+      "customer": "N/A",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1, Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 70.34,
+      "discounts": 9.5,
+      "returns": 0,
+      "net_sales": 60.84,
+      "shipping_charges": 0,
+      "taxes": 4.88,
+      "total_sales": 65.72,
+      "units": 2,
+      "cogs": 37.21,
+      "gross_profit": 23.63,
+      "gross_margin": 0.38839579224194604
+    },
     {
       "order_id": "154673",
       "order_date": "2026-09-12T21:00:08Z",
@@ -590,6 +636,34 @@
       "cogs": 3.15,
       "gross_profit": 11.54,
       "gross_margin": 0.7855684138869979
+    },
+    {
+      "order_id": "154658",
+      "order_date": "2026-09-11T20:29:50Z",
+      "tags": [
+        "commissioneligible",
+        "Concierge",
+        "HitsHudson",
+        "NP"
+      ],
+      "tag_has_hits": true,
+      "customer": "Glenview Farm",
+      "customer_email": "",
+      "payment_status": "PAID",
+      "fulfillment_status": "FULFILLED",
+      "location": "Corro Trailer 1",
+      "location_matches_hits": true,
+      "gross_sales": 79.19,
+      "discounts": 11.87,
+      "returns": 0,
+      "net_sales": 67.32,
+      "shipping_charges": 0,
+      "taxes": 5.38,
+      "total_sales": 72.7,
+      "units": 1,
+      "cogs": 54.83,
+      "gross_profit": 12.49,
+      "gross_margin": 0.18553178847296498
     },
     {
       "order_id": "154657",
@@ -9500,15 +9574,15 @@
     }
   ],
   "stats": {
-    "scanned": 1318,
-    "matched": 378,
+    "scanned": 1321,
+    "matched": 381,
     "excluded": 940,
     "excluded_missing_tag": 940,
-    "excluded_wrong_location": 931,
-    "excluded_non_hits_tag": 41,
-    "matched_location_and_tag": 93,
+    "excluded_wrong_location": 932,
+    "excluded_non_hits_tag": 40,
+    "matched_location_and_tag": 94,
     "matched_tag_only": 11,
-    "matched_location_only": 274
+    "matched_location_only": 276
   },
   "formulas": {
     "budget_net_sales": "Gross Sales Goal × (1 − Discounts & Returns %)",
